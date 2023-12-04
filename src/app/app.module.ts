@@ -4,13 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
