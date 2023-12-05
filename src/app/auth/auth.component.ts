@@ -25,7 +25,6 @@ export class AuthComponent {
     const password = form.value.password;
 
     this.isLoading = true;
-
     if (this.isLoginMode){
       // ...
     } else {
