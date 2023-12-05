@@ -5,8 +5,8 @@ import { WindowCenterComponent } from "./window-center/window-center.component";
 import { AuthComponent } from "./auth/auth.component";
 
 const appRoutes: Routes = [
-  { path: "", redirectTo: "/login", pathMatch: "full" },
-  { path: "login", component: AuthComponent },
+  { path: "", redirectTo: "/auth", pathMatch: "full" },
+  { path: "auth", component: AuthComponent },
   {path: "main", component: WindowCenterComponent},
 ];
 
