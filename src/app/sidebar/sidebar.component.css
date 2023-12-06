@@ -14,3 +14,11 @@ h1 {
 .bi-folder-fill {
   color: #0f2530;
 }
+
+.folderAlias{
+  font-size: 25px;
+}
+
+.folderCount {
+  font-size: 25px;
+}
