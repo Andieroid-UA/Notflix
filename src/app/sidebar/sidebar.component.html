@@ -3,13 +3,16 @@
     <div class="bg-blue col-auto col-md-4 col-lg-3 min-vh-100 d-flex flex-column justify-content-start" style="width: 415px;">
       <div class="bg-muted p-5">
         <div class="column small-3 mobiledrop">
+  <!-- Title of the Folders Sidebar -->
   <div id="sidebarTitle">
     <h1>Folders</h1>
   </div>
+
   <!-- Example for adding a new folder -->
   <input type="text" [(ngModel)]="newFolderName">
   <button (click)="addNewFolder(newFolderName)">Add Folder</button>
 </div>
+
   <!-- Loop through folders using *ngFor -->
 <ul id="folderList">
   <li *ngFor="let folder of folders" [title]="folder.name" (click)="folderClicked(folder)">
