@@ -10,6 +10,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { FolderService } from './sidebar/folder.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     NavbarComponent,
     WindowCenterComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     FormsModule
 
   ],
-  providers: [],
+  providers: [FolderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

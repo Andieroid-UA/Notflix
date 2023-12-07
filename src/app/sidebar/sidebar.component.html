@@ -9,9 +9,12 @@
   </div>
 
   <!-- Example for adding a new folder -->
-  <input type="text" [(ngModel)]="newFolderName">
-  <button (click)="addNewFolder(newFolderName)">Add Folder</button>
-</div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="newFolderName">
+    <div class="input-group-append">
+      <button class="btn btn-primary" (click)="addNewFolder(newFolderName)">New Folder</button>
+    </div>
+  </div>
 
   <!-- Loop through folders using *ngFor -->
 <ul id="folderList">
