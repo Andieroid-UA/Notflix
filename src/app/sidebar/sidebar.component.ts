@@ -14,25 +14,25 @@ export class SidebarComponent {
 
   newFolderName: string = '';
   errorMessage: string = '';
-
   showDeleteModal = false;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {}
 
+
+  // We can attach this to display different data in the main window/table
   folderClicked(folder: { name: string; count: number }): void {
-    // Handle folder click functionality here
     console.log(`Clicked folder: ${folder.name}`);
-    // Potentially, update folder counts or perform other actions
   }
 
   addNewFolder(folderName: string): void {
     if (folderName.trim() !== '') {
       const newFolder = { name: folderName, count: 0 };
       this.folders.push(newFolder);
-      this.errorMessage = ''; // Clear error message if folder is added
-      // Potentially, perform actions after adding the folder
+      this.errorMessage = '';
+
     } else {
-      this.errorMessage = 'Folder name cannot be empty'; // Set error message
+      this.errorMessage = 'Folder name cannot be empty';
+      console.log('Folder name cannot be empty');
     }
   }
 
@@ -47,7 +47,6 @@ export class SidebarComponent {
       const index = this.folders.findIndex(f => f === folderToDelete);
       if (index !== -1) {
         this.folders.splice(index, 1);
-        // Perform additional deletion actions or update UI
       }
       componentRef.destroy();
     });
