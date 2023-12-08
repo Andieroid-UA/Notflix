@@ -1,0 +1,15 @@
+.tracker-logo {
+  width: 20vw;
+  margin: 2px;
+  color: rgb(144, 151, 223);
+  display: flex;
+}
+
+.profile-picture {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 60%;
+  overflow: hidden;
+  object-fit: cover;
+}

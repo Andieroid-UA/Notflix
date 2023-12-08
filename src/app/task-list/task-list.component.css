@@ -22,50 +22,17 @@ textarea {
 
 /* Header */
 
-header {
+/* header {
   position: relative;
   top: 0;
+  height: 25vh;
   z-index: 1;
   display: flex;
   justify-content: space-between;
 }
 
-.tracker-logo {
-  height: 15vh;
-  width: 20vw;
-  margin: 2px;
-  border-radius: 8px;
-  color: white;
-  background-color: rgb(51, 100, 146);
-  display: flex;
-}
-
-.brain-icon {
-  margin-top: 10px;
-  margin-right: 10px;
-  width: 46px;
-  height: 46px;
-  overflow: hidden;
-  object-fit: cover;
-  position: relative;
-  }
-
-.logo-words {
-  margin-top: 9px;
-  margin-left: 2px;
-}
-
-h1 {
-  font-family: 'Times New Roman', Times, serif;
-}
-
-h2 {
-  font-size: 12px;
-}
-
 .user-container {
   width: 25vw;
-  height: 20vh;
   margin-top: 8px;
   box-sizing: border-box;
   border: 2px solid black;
@@ -74,42 +41,14 @@ h2 {
   justify-content: space-evenly;
 }
 
-.profile-picture {
-    margin-right: 10px;
-    width: 46px;
-    height: 46px;
-    border-radius: 60%;
-    overflow: hidden;
-    object-fit: cover;
-}
-
-.user-details {
+ .user-details {
   margin-top: 8px;
 }
 
 .profile-dropdown {
   margin-top: 9px;
   margin-left: 2px;
-}
-
-/* Navbar */
-
-.navbar {
-  position: relative;
-  height: 20px;
-  width: 75%;
-  justify-content: space-evenly;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 2px solid black;
-}
-
-ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 1rem;
-}
+} */
 
 /* Add New Subscription Button */
 
@@ -132,6 +71,7 @@ ul {
   width: 80%;
   position: relative;
   right: 0px;
+  /* margin: auto; */
 }
 
 button {
