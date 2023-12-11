@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { WindowCenterComponent } from './window-center/window-center.component';
+import { SidebarComponent } from './window_format/sidebar/sidebar.component';
+import { NavbarComponent } from './window_format/navbar/navbar.component';
+import { WindowCenterComponent } from './window_format/window-center/window-center.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { FolderService } from './sidebar/folder.service';
+import { FolderService } from './window_format/sidebar/folder.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TaskComponent } from './task/task/task.component';
+import { TaskDialogComponent } from './task/task-dialog/task-dialog.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AuthComponent,
     LoadingSpinnerComponent,
     DashboardComponent,
+    TaskComponent,
+    TaskDialogComponent,
+    TaskListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
-
   ],
   providers: [FolderService],
   bootstrap: [AppComponent]

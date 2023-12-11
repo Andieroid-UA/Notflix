@@ -1,0 +1,36 @@
+.window {
+  display: flex;
+  flex-direction: column;
+  width: 180rem;
+  background-color: #212529;
+  max-height: 98vh; /* Set the maximum height to the height of the viewport */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+.header {
+  background-color: #ff0000;
+  margin-right: 0px;
+}
+
+.container {
+  display: flex;
+  max-height: 98vh;
+  width: 100rem;
+  background-color: #0cf151;
+}
+
+.sidebar {
+  background-color: rgb(196, 4, 255); /* Change this to your desired sidebar color */
+  margin-left: -200px;
+  width: 100px; /* Set a fixed width for the sidebar */
+  flex-wrap: wrap;
+}
+
+.main-content {
+  width: 150%;
+  height:71.5rem;
+  padding-left: 60px;
+  flex-wrap: wrap;
+  margin-top: 0cap;
+  background-color: #eaff2a;
+}
