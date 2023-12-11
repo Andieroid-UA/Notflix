@@ -2,6 +2,11 @@
    <!-- ========= Dashboard ========== -->
             <!-- ========= Dashboard Cards========== -->
    <div class="dashboard-title">USER DASHBOARD</div>
+   <div class="button-group">
+    <button onclick="window.print();" class="dashboard-button print"><i class="fa-solid fa-print" style="color: #000000;"></i> Print</button>
+    <button onclick="shareDashboard();" class="dashboard-button share"><i class="fa-solid fa-share-nodes" style="color: #000000;"></i> Share</button>
+    <button onclick="exportDashboard();" class="dashboard-button export"><i class="fa-solid fa-file-export" style="color: #000000;"></i> Export</button>
+  </div>
             <div class="card-container">
               <div class="dashboard-card">
                   <div>
@@ -58,84 +63,45 @@
               <canvas id="barChartCanvas"></canvas>
             </div>
           </div>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="dashboard-container">
-  <div class="dashboard-title">USER DASHBOARD</div>
-  <div class="dashboard-row">
- 
-      <div class="dashboard-card">
-        <i class="fa-solid fa-rocket card-icon"></i>
-        <div class="card-top">
-          <div class="value">10</div>
-        </div>
-        <div class="description">Active Subscriptions</div>
-      </div>
-
- 
-      <div class="dashboard-card">
-        <i class="fa-solid fa-rocket card-icon"></i>
-        <div class="card-top">
-          <div class="value">5</div>
-        </div>
-        <div class="description">Cancelled Subscriptions</div>
-      </div>
- 
-
-    <div class="dashboard-card">
-      <i class="fa-solid fa-rocket card-icon"></i>
-      <div class="card-top">
-        <div class="value">5</div>
-      </div>
-      <div class="description">New Subscriptions</div>
-    </div>
-
-
-
-
-  <div class="dashboard-card">
-    <i class="fa-solid fa-rocket card-icon"></i>
-    <div class="card-top">
-      <div class="value">$16.89</div>
-    </div>
-    <div class="description">Avg Subscription Cost</div>
-  </div> -->
-
-  <!-- CHARTS -->
+      
 
 
  
-
-
-
 
 
 
 
 
   <!-- ACTIVE SUBSCRIPTIONS TABLE -->
-
+  <div class="container mt-4">
+    <div class="dashboard-header">Active Subscriptions</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Subscription</th>
+          <th scope="col">Billing Day</th>
+                      <!-- Monthly, yearly, etc. -->
+          <th scope="col">Billing Term</th> 
+          <th scope="col">Amount</th>
+          <th scope="col">Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Netflix</td>
+          <td>5th</td>
+          <td>Monthly</td>
+          <td>$20.99</td>
+          <td>Entertainment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
   <!-- CANCELLED SUBSCRIPTIONS TABLE -->
-<!-- 
-  <div class="container mt-4">
+
+  <!-- <div class="container mt-4">
       <div class="dashboard-header">Cancelled Subscriptions</div>
       <table class="table">
         <thead>
