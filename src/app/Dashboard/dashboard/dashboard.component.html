@@ -1,79 +1,140 @@
-<div class="container mt-5">
-  <div class="dashboard-header">USER DASHBOARD</div>
+
+   <!-- ========= Dashboard ========== -->
+            <!-- ========= Dashboard Cards========== -->
+   <div class="dashboard-title">USER DASHBOARD</div>
+            <div class="card-container">
+              <div class="dashboard-card">
+                  <div>
+                      <div class="numbers">10</div>
+                      <div class="cardName">Active Subscriptions</div>
+                  </div>
+
+                  <div class="icons">
+                    <i class="fa-sharp fa-solid fa-bolt" style="color: blue;"></i>
+                  </div>
+              </div>
+
+              <div class="dashboard-card">
+                  <div>
+                      <div class="numbers">20</div>
+                      <div class="cardName">Cancelled Subscriptions</div>
+                  </div>
+                  <div class="icons">
+                    <i class="fa-sharp fa-solid fa-xmark" style="color: red;" ></i>
+                  </div>
+              </div>
+
+              <div class="dashboard-card">
+                  <div>
+                      <div class="numbers">5</div>
+                      <div class="cardName">New Subscriptions</div>
+                  </div>
+
+                  <div class="icons">
+                    <i class="fa-sharp fa-solid fa-plus" style="color: #1bff0a;"></i>
+                  </div>
+              </div>
+
+              <div class="dashboard-card">
+                  <div>
+                      <div class="numbers">$16.89</div>
+                      <div class="cardName">Avg Subscription Cost</div>
+                  </div>
+
+                  <div class="icons">
+                    <i class="fa-sharp fa-solid fa-filter-circle-dollar"  style="color:	#008000;"></i>
+                  </div>
+              </div>
+          </div>
+
+  <!-- ========= Dashboard Charts ========== -->
+          <div class="charts">
+            <div class="pie">
+              <canvas id="donutChartCanvas">
+              </canvas>
+            </div>
+          
+            <div class="bar">
+              <canvas id="barChartCanvas"></canvas>
+            </div>
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="dashboard-container">
+  <div class="dashboard-title">USER DASHBOARD</div>
   <div class="dashboard-row">
-    <div class="col-md-3">
-      <div class="dashboard-card bg-light">
-        <div class="value">10</div>
-        <div class="description">ACTIVE SUBSCRIPTIONS</div>
+ 
+      <div class="dashboard-card">
+        <i class="fa-solid fa-rocket card-icon"></i>
+        <div class="card-top">
+          <div class="value">10</div>
+        </div>
+        <div class="description">Active Subscriptions</div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="dashboard-card bg-light">
+
+ 
+      <div class="dashboard-card">
+        <i class="fa-solid fa-rocket card-icon"></i>
+        <div class="card-top">
+          <div class="value">5</div>
+        </div>
+        <div class="description">Cancelled Subscriptions</div>
+      </div>
+ 
+
+    <div class="dashboard-card">
+      <i class="fa-solid fa-rocket card-icon"></i>
+      <div class="card-top">
         <div class="value">5</div>
-        <div class="description">CANCELLED SUBSCRIPTIONS</div>
       </div>
+      <div class="description">New Subscriptions</div>
     </div>
-    <div class="col-md-3">
-      <div class="dashboard-card bg-light">
-        <div class="value">2</div>
-        <div class="description">NEW SUBSCRIPTIONS</div>
-        <div class="stats text-success">Recently Added</div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="dashboard-card bg-light">
-        <div class="value">$16.89</div>
-        <div class="description">AVG SUBSCRIPTION COST</div>
-        <div class="stats text-primary">Per Month</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
-<div class="container mt-4">
-  <h2>Payment Method Breakdown</h2>
-  <div class="chart-container">
-    <canvas id="myChart"></canvas>
-  </div>
-</div>
+
+  <div class="dashboard-card">
+    <i class="fa-solid fa-rocket card-icon"></i>
+    <div class="card-top">
+      <div class="value">$16.89</div>
+    </div>
+    <div class="description">Avg Subscription Cost</div>
+  </div> -->
+
+  <!-- CHARTS -->
+
+
+ 
+
+
+
+
+
+
 
 
   <!-- ACTIVE SUBSCRIPTIONS TABLE -->
 
-<div class="container mt-4">
-  <div class="dashboard-header">Active Subscriptions</div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Subscription</th>
-        <th scope="col">Next Due Date</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Billing Term</th>
-        <th scope="col">Category</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="logo-cell"><img src="logo.png" alt="Logo"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="text-status"></td>
-        <td></td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
-
 
 
   <!-- CANCELLED SUBSCRIPTIONS TABLE -->
-
+<!-- 
   <div class="container mt-4">
       <div class="dashboard-header">Cancelled Subscriptions</div>
       <table class="table">
@@ -100,14 +161,14 @@
   
         </tbody>
       </table>
-    </div>
+    </div> -->
 
 
 
 
 
     <!-- BILLING HISTORY TABLE -->
-
+<!-- 
     <div class="container mt-4">
       <div class="dashboard-header">Billing History</div>
       <table class="table">
@@ -117,7 +178,7 @@
             <th scope="col">Subscription</th>
             <th scope="col">Payment Date</th>
             <th scope="col">Amount</th>
-            <!-- Paid, Not Paid, Invalid -->
+         
             <th scope="col">Status</th>
             <th scope="col">Payment Method</th>
           </tr>
@@ -135,5 +196,5 @@
   
         </tbody>
       </table>
-    </div>
+    </div> -->
 
