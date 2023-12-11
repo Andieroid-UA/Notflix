@@ -1,5 +1,5 @@
 .container-fluid {
-  margin-left: -300px;
+  margin-left: -20rem;
   background-color: #2596be;
   width: 25em;
 }
@@ -20,5 +20,16 @@ h1 {
 }
 
 .folderCount {
-  font-size: 25px;
+  font-size: 20px;
+}
+
+li {
+  color: transparent;
+  margin-left: -30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 20px;
+  margin-left: 10px;
 }

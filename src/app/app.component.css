@@ -1,3 +1,7 @@
 .main {
   background-color: #212529;
 }
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
