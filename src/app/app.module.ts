@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { FolderService } from './sidebar/folder.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FolderService } from './sidebar/folder.service';
     WindowCenterComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
