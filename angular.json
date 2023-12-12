@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "notflix-app:build:production"
+              "browserTarget": "notflix-app:build:production"
             },
             "development": {
-              "buildTarget": "notflix-app:build:development"
+              "browserTarget": "notflix-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "notflix-app:build"
+            "browserTarget": "notflix-app:build"
           }
         },
         "test": {
@@ -98,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
