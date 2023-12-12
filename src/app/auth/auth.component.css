@@ -1,6 +1,3 @@
-/* body {
-  color: #212529;
-} */
 .container-fluid {
   background-color: #212529;
   height: 100vh;
@@ -9,4 +6,45 @@
 
 .row {
   justify-content: center;
+}
+
+label.sr-only {
+  color: white;
+}
+
+button.authswitch {
+  border-radius: 6px;
+  background-color: #4eacc9;
+  font-weight: 600;
+  height: 40px;
+  border: solid #212529;
+  color: #212529;
+}
+
+button.authswitch:hover {
+  background-color: #4eacc9b7;
+  cursor: pointer;
+}
+
+button.authbutton:enabled {
+  border-radius: 6px;
+  background-color: #4eacc9;
+  font-weight: 600;
+  height: 40px;
+  border: solid #212529;
+  color: #212529;
+}
+
+button.authbutton:disabled {
+  border-radius: 6px;
+  background-color: #4eacc962;
+  font-weight: 600;
+  height: 40px;
+  border: solid #212529;
+  color: #212529;
+}
+
+button.authbutton:enabled:hover {
+  background-color: #4eacc9b7;
+  cursor: pointer;
 }
