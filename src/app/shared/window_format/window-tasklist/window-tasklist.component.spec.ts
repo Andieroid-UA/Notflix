@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WindowCenterComponent } from './window-center.component';
+import { WindowTasklistComponent } from './window-tasklist.component';
 
 describe('WindowCenterComponent', () => {
-  let component: WindowCenterComponent;
-  let fixture: ComponentFixture<WindowCenterComponent>;
+  let component: WindowTasklistComponent;
+  let fixture: ComponentFixture<WindowTasklistComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WindowCenterComponent]
+      declarations: [WindowTasklistComponent]
     });
-    fixture = TestBed.createComponent(WindowCenterComponent);
+    fixture = TestBed.createComponent(WindowTasklistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
