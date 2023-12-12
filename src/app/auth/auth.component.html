@@ -49,12 +49,12 @@
 
           <div class="checkbox mb-3"></div>
 
-          <button class="authbutton" type="submit" [disabled]="!authForm.valid">
+          <button class="authButton" type="submit" [disabled]="!authForm.valid">
             {{ isLoginMode ? "Login" : "Sign Up" }}
           </button>
           |
 
-          <button class="authswitch" (click)="onSwitchMode()" type="button">
+          <button class="authSwitch" (click)="onSwitchMode()" type="button">
             Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
           </button>
 

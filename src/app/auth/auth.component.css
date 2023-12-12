@@ -12,7 +12,7 @@ label.sr-only {
   color: white;
 }
 
-button.authswitch {
+button.authSwitch {
   border-radius: 6px;
   background-color: #4eacc9;
   font-weight: 600;
@@ -21,12 +21,12 @@ button.authswitch {
   color: #212529;
 }
 
-button.authswitch:hover {
+button.authSwitch:hover {
   background-color: #4eacc9b7;
   cursor: pointer;
 }
 
-button.authbutton:enabled {
+button.authButton:enabled {
   border-radius: 6px;
   background-color: #4eacc9;
   font-weight: 600;
@@ -35,7 +35,7 @@ button.authbutton:enabled {
   color: #212529;
 }
 
-button.authbutton:disabled {
+button.authButton:disabled {
   border-radius: 6px;
   background-color: #4eacc962;
   font-weight: 600;
@@ -44,7 +44,7 @@ button.authbutton:disabled {
   color: #212529;
 }
 
-button.authbutton:enabled:hover {
+button.authButton:enabled:hover {
   background-color: #4eacc9b7;
   cursor: pointer;
 }
