@@ -6,6 +6,7 @@ import { AlertComponent } from 'src/app/alert/alert.component';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
+
 export class SidebarComponent {
   folders = [
     { name: 'Trials', count: 0 },

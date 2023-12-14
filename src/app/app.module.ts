@@ -13,10 +13,10 @@ import { TaskComponent } from './pages/task/task/task.component';
 import { TaskDialogComponent } from './pages/task/task-dialog/task-dialog.component';
 import { TaskListComponent } from './pages/task/task-list/task-list.component';
 import { AlertComponent } from './alert/alert.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './shared/window_format/sidebar/folders/modal.component';
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
-import { FolderService } from './shared/window_format/sidebar/folder.service';
+import { FolderService } from './shared/window_format/sidebar/folders/folder.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { FolderService } from './shared/window_format/sidebar/folder.service';
     TaskDialogComponent,
     TaskListComponent,
     AlertComponent,
-    ModalComponent,
     WindowDashboardComponent,
     WindowTasklistComponent,
   ],

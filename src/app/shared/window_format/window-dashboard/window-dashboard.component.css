@@ -4,8 +4,8 @@ body {
 
 .window {
   display: flex;
+  margin-right: -592px;
   flex-direction: column;
-  margin-left: 100px;
   background-color: #212529;
   max-height: 100vh; /* Set the maximum height to the height of the viewport */
   overflow-y: clip; /* Enable vertical scrolling if content overflows */
@@ -26,19 +26,10 @@ body {
   background-color: #0cf151;
 }
 
-.sidebar {
-  background-color: rgb(196, 4, 255); /* Change this to your desired sidebar color */
-  margin-left: 200px;
-  width: 90px; /* Set a fixed width for the sidebar */
-  flex-wrap: wrap;
-  max-height: 85vh;
-  overflow-y: clip;
-  /* Don't add overflow-x, it will clip the folder sidebar */
-}
-
 .main-content {
   width: 100%;
-  padding-left: 25px;
+  margin-left: 0px;
+  margin-right: 0px;
   padding-top: 25px;
   max-height: 85vh;
   overflow-y: clip;
