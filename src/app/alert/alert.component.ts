@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alert',
@@ -20,3 +21,6 @@ export class AlertComponent {
     this.deleteFolder.emit(folder);
   }
 }
+
+
+
