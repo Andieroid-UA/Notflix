@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +16,7 @@ import { ModalComponent } from './shared/window_format/sidebar/folders/modal.com
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
 import { FolderService } from './shared/window_format/sidebar/folders/folder.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +25,14 @@ import { FolderService } from './shared/window_format/sidebar/folders/folder.ser
     NavbarComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    DashboardComponent,
     TaskComponent,
     TaskDialogComponent,
     TaskListComponent,
     AlertComponent,
+    ModalComponent,
     WindowDashboardComponent,
     WindowTasklistComponent,
+    DashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [FolderService],
