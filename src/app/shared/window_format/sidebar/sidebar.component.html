@@ -13,14 +13,12 @@
           <div class="input-group mb-3">
             <input type="text" class="form-control" [(ngModel)]="newFolderName" style="width: 300px;">
             <div class="input-group-append">
+
+              <!-- Create a new folder-->
               <button class="btn btn-primary" (click)="addNewFolder(newFolderName)">New Folder</button>
 
-
-
-              <!-- Update to pass the entire folder object -->
-              <button class="btn btn-danger" *ngFor="let folder of folders" (click)="deleteFolderClicked(folder)">Delete {{ folder.name }}</button>
-
-
+              <!-- This is where I need to edit the delete folder button-->
+              <button class="btn btn-danger" (click)="deleteFolderClicked()">Delete Folder</button>
 
             </div>
           </div>
@@ -30,7 +28,9 @@
             {{ errorMessage }}
           </div>
 
-          <!-- This is the text list of folders-->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- This is the text list of folders MAKE CLICKABLE TO CONNECT TO TABLE DATA!-->
           <ul id="folderList">
             <li *ngFor="let folder of folders" [title]="folder.name" (click)="folderClicked(folder)">
               <a class="d-flex text-decoration-none mt-1 align-items-center text-black">
@@ -44,6 +44,8 @@
               </a>
             </li>
           </ul>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->
 
           <!-- Container for Modal -->
           <div #modalContainer></div>

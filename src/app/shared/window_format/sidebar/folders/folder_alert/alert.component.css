@@ -23,3 +23,16 @@
 .modal-body, .modal-header, .modal-footer {
   padding: 1rem;
 }
+
+.btn {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+li {
+  color: transparent;
+  background-color: transparent;
+  margin-left: -30px;
+}

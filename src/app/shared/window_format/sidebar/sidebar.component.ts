@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-import { AlertComponent } from 'src/app/alert/alert.component';
+import { AlertComponent } from 'src/app/shared/window_format/sidebar/folders/folder_alert/alert.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -37,17 +37,17 @@ export class SidebarComponent {
     }
   }
 
-  deleteFolderClicked(folder: { name: string; count: number }): void {
+  deleteFolderClicked(): void {
     const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
     const componentRef = this.viewContainerRef.createComponent(alertComponentFactory);
 
-    componentRef.instance.message = `Are you sure you want to delete folder "${folder.name}"?`;
-    componentRef.instance.selectedFolder = folder;
+    componentRef.instance.message = `Select the folder you would like to delete.`;
+    componentRef.instance.folders = this.folders; // Pass the folders data to the modal component
 
     componentRef.instance.deleteFolder.subscribe((folderToDelete: { name: string; count: number }) => {
       const index = this.folders.findIndex(f => f === folderToDelete);
       if (index !== -1) {
-        this.folders.splice(index, 1);
+        this.folders.splice(index, 1); // Delete the selected folder
       }
       componentRef.destroy();
     });
@@ -56,6 +56,8 @@ export class SidebarComponent {
       componentRef.destroy();
     });
   }
+
+
 
 
 

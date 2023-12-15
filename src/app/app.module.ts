@@ -11,7 +11,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { TaskComponent } from './pages/task/task/task.component';
 import { TaskDialogComponent } from './pages/task/task-dialog/task-dialog.component';
 import { TaskListComponent } from './pages/task/task-list/task-list.component';
-import { AlertComponent } from './alert/alert.component';
+import { AlertComponent } from './shared/window_format/sidebar/folders/folder_alert/alert.component';
 import { ModalComponent } from './shared/window_format/sidebar/folders/modal.component';
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
