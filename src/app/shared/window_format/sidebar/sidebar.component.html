@@ -15,23 +15,13 @@
             <div class="input-group-append">
               <button class="btn btn-primary" (click)="addNewFolder(newFolderName)">New Folder</button>
 
-              <!-- Ze delete button to trigger a modal -->
-              <button class="btn btn-danger" (click)="showDeleteModal = true">Delete Folder</button>
 
-            </div>
-          </div>
 
-          <!-- Modal Markup -->
-          <div *ngIf="showDeleteModal" class="modal">
-            <div class="modal-content">
-              <span class="close" (click)="showDeleteModal = false">&times;</span>
-              <h2>Delete Folder</h2>
-              <ul>
-                <li *ngFor="let folder of folders">
-                  {{ folder.name }}
-                  <button class="btn btn-danger" (click)="deleteFolderConfirmation(folder)">Delete</button>
-                </li>
-              </ul>
+              <!-- Update to pass the entire folder object -->
+              <button class="btn btn-danger" *ngFor="let folder of folders" (click)="deleteFolderClicked(folder)">Delete {{ folder.name }}</button>
+
+
+
             </div>
           </div>
 
@@ -40,7 +30,7 @@
             {{ errorMessage }}
           </div>
 
-          <!-- Loop through folders using *ngFor -->
+          <!-- This is the text list of folders-->
           <ul id="folderList">
             <li *ngFor="let folder of folders" [title]="folder.name" (click)="folderClicked(folder)">
               <a class="d-flex text-decoration-none mt-1 align-items-center text-black">
