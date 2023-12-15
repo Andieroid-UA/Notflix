@@ -25,41 +25,64 @@ export class SidebarComponent {
     console.log(`Clicked folder: ${folder.name}`);
   }
 
+//The longest app we can place could be "This_is_an_exam"
+
   addNewFolder(folderName: string): void {
     if (folderName.trim() !== '') {
-      const newFolder = { name: folderName, count: 0 };
-      this.folders.push(newFolder);
-      this.errorMessage = '';
+      if (folderName.trim().length <= 15) {
+        const newFolder = { name: folderName, count: 0 };
+        this.folders.push(newFolder);
+        this.errorMessage = '';
 
+        // Reset error message after 3 seconds
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
+      } else {
+        this.errorMessage = 'Folder name must be 15 characters or less';
+
+        // Reset error message after 3 seconds
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
+      }
     } else {
       this.errorMessage = 'Folder name cannot be empty';
-      console.log('Folder name cannot be empty');
+
+      // Reset error message after 3 seconds
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2000);
     }
   }
 
   deleteFolderClicked(): void {
-    const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
-    const componentRef = this.viewContainerRef.createComponent(alertComponentFactory);
+    if (this.folders.length === 0) {
+      // Display an error message when there are no folders to delete
+      this.errorMessage = 'There are no folders to delete';
 
-    componentRef.instance.message = `Select the folder you would like to delete.`;
-    componentRef.instance.folders = this.folders; // Pass the folders data to the modal component
+      // Reset error message after 3 seconds (adjust timing as needed)
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
+    } else {
+      const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+      const componentRef = this.viewContainerRef.createComponent(alertComponentFactory);
 
-    componentRef.instance.deleteFolder.subscribe((folderToDelete: { name: string; count: number }) => {
-      const index = this.folders.findIndex(f => f === folderToDelete);
-      if (index !== -1) {
-        this.folders.splice(index, 1); // Delete the selected folder
-      }
-      componentRef.destroy();
-    });
+      componentRef.instance.folders = this.folders; // Pass the folders data to the modal component
 
-    componentRef.instance.closeModal.subscribe(() => {
-      componentRef.destroy();
-    });
+      componentRef.instance.deleteFolder.subscribe((folderToDelete: { name: string; count: number }) => {
+        const index = this.folders.findIndex(f => f === folderToDelete);
+        if (index !== -1) {
+          this.folders.splice(index, 1); // Delete the selected folder
+        }
+        componentRef.destroy();
+      });
+
+      componentRef.instance.closeModal.subscribe(() => {
+        componentRef.destroy();
+      });
+    }
   }
-
-
-
-
-
 
 }
