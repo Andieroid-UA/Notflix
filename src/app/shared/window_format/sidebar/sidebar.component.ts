@@ -34,14 +34,12 @@ export class SidebarComponent {
         this.folders.push(newFolder);
         this.errorMessage = '';
 
-        // Reset error message after 3 seconds
         setTimeout(() => {
           this.errorMessage = '';
         }, 2000);
       } else {
         this.errorMessage = 'Folder name must be 15 characters or less';
 
-        // Reset error message after 3 seconds
         setTimeout(() => {
           this.errorMessage = '';
         }, 2000);
@@ -49,7 +47,6 @@ export class SidebarComponent {
     } else {
       this.errorMessage = 'Folder name cannot be empty';
 
-      // Reset error message after 3 seconds
       setTimeout(() => {
         this.errorMessage = '';
       }, 2000);
