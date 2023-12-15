@@ -1,7 +1,6 @@
-.container-fluid {
-  margin-left: -20rem;
+.container {
   background-color: #2596be;
-  width: 25em;
+  height: 85vh;
 }
 
 h1 {
@@ -15,7 +14,7 @@ h1 {
   color: #0f2530;
 }
 
-.folderAlias{
+.folderAlias {
   font-size: 25px;
 }
 

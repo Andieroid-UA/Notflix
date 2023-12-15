@@ -17,6 +17,7 @@ import { ModalComponent } from './modal/modal.component';
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
 import { FolderService } from './shared/window_format/sidebar/folder.service';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FolderService } from './shared/window_format/sidebar/folder.service';
     ModalComponent,
     WindowDashboardComponent,
     WindowTasklistComponent,
+    CalendarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [FolderService],
