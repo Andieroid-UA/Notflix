@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';

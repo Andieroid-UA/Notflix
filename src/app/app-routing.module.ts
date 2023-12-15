@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth/auth.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TaskListComponent } from './pages/task/task-list/task-list.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
