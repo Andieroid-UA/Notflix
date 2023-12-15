@@ -9,7 +9,7 @@
 }
 
 label.sr-only {
-  color: white;
+  position: relative;
 }
 
 button.authSwitch {
