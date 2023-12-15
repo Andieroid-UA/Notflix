@@ -24,8 +24,8 @@
           </div>
 
           <!-- Error message lives here -->
-          <div *ngIf="errorMessage !== ''" class="error-message">
-            {{ errorMessage }}
+          <div class="alert alert-danger" *ngIf="errorMessage !== ''">
+            <p>{{ errorMessage }}</p>
           </div>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->
