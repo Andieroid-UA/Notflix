@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Chart, ChartConfiguration, ChartTypeRegistry } from 'chart.js';
+import { Chart} from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -113,7 +113,7 @@ const donutChart = new Chart('donutChartCanvas', {
                 }
             }
         }
-        // ... other options
+    
     }
 });
   }
@@ -125,53 +125,7 @@ const donutChart = new Chart('donutChartCanvas', {
 
 
 
-//   public pieChartOptions: ChartConfiguration['options'] = {
-//     responsive: true,
-//     plugins: {
-//       legend: {
-//         display: true,
-//         position: 'top',
-//         labels: {
-//           color: 'black'
-//         }
-//       },
 
-//       title: {
-//         display: true,
-//         text: 'Monthly Subscription Breakdown',
-//         color: 'black'
-//       }
-
-//     }
-//   };
-//   public pieChartType: ChartType = 'pie';
-//   public pieChartPlugins = [];
-  
-//   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-//     labels: ['Netflix', 'Spotify', 'Hulu', 'Disney+', 'HBO Max', 'Tidal'],
-//     datasets: [{
-//       data: [12.1, 35.98, 11.92, 10.93, 15.07, 14.00],
-//       backgroundColor: [
-//         'rgba(255, 99, 132, 0.2)',
-//         'rgba(54, 162, 235, 0.2)',
-//         'rgba(255, 206, 86, 0.2)',
-//         'rgba(75, 192, 192, 0.2)',
-//         'rgba(153, 102, 255, 0.2)',
-//         'rgba(255, 159, 64, 0.2)'
-//       ],
-//       hoverBackgroundColor: [
-//         'rgba(255, 99, 132, 0.4)',
-//         'rgba(54, 162, 235, 0.4)',
-//         'rgba(255, 206, 86, 0.4)',
-//         'rgba(75, 192, 192, 0.4)',
-//         'rgba(153, 102, 255, 0.4)',
-//         'rgba(255, 159, 64, 0.4)'
-//       ]
-//     }]
-//   };
-// donutChart: any;
-// lineChart: any;
-// }
 
 
 
