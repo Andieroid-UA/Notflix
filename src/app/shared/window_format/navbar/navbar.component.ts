@@ -10,32 +10,42 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy{
-  isAuthenticated = false;
-  private userSub: Subscription | undefined;
 
-  constructor(
-    private dataStorageService: DataStorageService,
-    private authService: AuthService
-    ) {}
+  export class NavbarComponent {
+isAuthenticated: any;
+}
+// export class NavbarComponent implements OnInit, OnDestroy{
+//   ngOnInit(): void {
+//     throw new Error('Method not implemented.');
+//   }
+//   ngOnDestroy(): void {
+//     throw new Error('Method not implemented.');
+//   }
+  // isAuthenticated = false;
+  // private userSub: Subscription;
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  // constructor(
+  //   private dataStorageService: DataStorageService,
+  //   private authService: AuthService
+  //   ) {}
 
-  ngOnInit() {
-    this.userSub = this.authService.user.subscribe(user => {
-      this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
-    });
-    }
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
-    onSaveData() {
-      this.dataStorageService.storeSubscriptions();
-    }
+  // ngOnInit() {
+  //   this.userSub = this.authService.user.subscribe(user => {
+  //     this.isAuthenticated = !!user;
+  //     console.log(!user);
+  //     console.log(!!user);
+  //   });
+  //   }
 
-    // onFetchData() {
-    //   this.dataStorageService.fetchSubscriptions().subscribe();
-    // }
-  }
+  //   onSaveData() {
+  //     this.dataStorageService.storeSubscriptions();
+  //   }
+
+  //   onFetchData() {
+  //     this.dataStorageService.fetchSubscriptions().subscribe();
+  //   }
+  // }
