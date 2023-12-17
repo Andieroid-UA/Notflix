@@ -7,14 +7,24 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-        <li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a class="nav-link text-white">
             <button class="bi d-block mx-auto mb-1" width="24" height="24" routerLink="/tasklist">Tasklist</button>
           </a>
         </li>
-        <li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a class="nav-link text-white">
             <button class="bi d-block mx-auto mb-1" width="24" height="24" routerLink="/dashboard">Dashboard</button>
+          </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link text-white">
+            <button class="bi d-block mx-auto mb-1" width="24" height="24" routerLink="/auth">Logout</button>
+          </a>
+        </li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a class="nav-link text-white">
+            <button class="bi d-block mx-auto mb-1" width="24" height="24" routerLink="/auth">Authenticate</button>
           </a>
         </li>
       </ul>
