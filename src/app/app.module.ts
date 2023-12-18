@@ -27,11 +27,11 @@ import { AuthComponent } from './auth/auth.component';
 import { ModalComponent } from './modal/modal.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { TaskComponent } from './pages/task/task/task.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,15 +44,16 @@ import { HttpClientModule } from '@angular/common/http';
     DropdownDirective,
     CabinetComponent,
     DrawerComponent,
-    AlertComponent,
     AuthComponent,
     ModalComponent,
     CalendarComponent,
     DashboardComponent,
-    TaskComponent,
     LoadingSpinnerComponent,
     NavbarComponent,
     SidebarComponent,
+    WindowDashboardComponent,
+    AlertComponent,
+
   ],
   imports: [
     BrowserModule,
