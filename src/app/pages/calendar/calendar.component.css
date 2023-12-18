@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  width: 102.5vw;
+  height: 100vh;
+  margin-left: -10rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}

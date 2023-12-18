@@ -1,0 +1,39 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.modal-content{
+  position: fixed;
+  top: 30vh;
+  left: 25vw;
+  width: 50vw;
+  height: 40vh;
+  background: white;
+  z-index: 100;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+.modal-body, .modal-header, .modal-footer {
+  padding: 1rem;
+}
+
+.btn {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+li {
+  color: transparent;
+  background-color: transparent;
+}
