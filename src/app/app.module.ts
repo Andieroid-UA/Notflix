@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
-import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { TaskComponent } from './pages/task/task/task.component';
 import { TaskDialogComponent } from './pages/task/task-dialog/task-dialog.component';
@@ -40,22 +42,19 @@ import { AddSubscriptionDialogComponent } from './pages/task/add-subscription-di
     WindowDashboardComponent,
     WindowTasklistComponent,
     CalendarComponent,
-    TaskComponent,
-    TaskEditFormDialogComponent,
-    TaskDialogComponent,
-    TaskListComponent,
-    AlertComponent,
-    ModalComponent,
-    WindowDashboardComponent,
-    WindowTasklistComponent,
-    CalendarComponent,
     TaskEditFormDialogComponent,
     DrawerComponent,
     ConfirmationDeleteDialogComponent,
     CabinetComponent,
-    AddSubscriptionDialogComponent
+    AddSubscriptionDialogComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [FolderService],
   bootstrap: [AppComponent],
 })
