@@ -31,8 +31,6 @@ import { TaskComponent } from './pages/task/task/task.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
-import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
-import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -55,8 +53,6 @@ import { HttpClientModule } from '@angular/common/http';
     LoadingSpinnerComponent,
     NavbarComponent,
     SidebarComponent,
-    WindowDashboardComponent,
-    WindowTasklistComponent
   ],
   imports: [
     BrowserModule,
