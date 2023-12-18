@@ -18,6 +18,11 @@ import { WindowDashboardComponent } from './shared/window_format/window-dashboar
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
 import { FolderService } from './shared/window_format/sidebar/folder.service';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { TaskEditFormDialogComponent } from './pages/task/task-edit-form-dialog/task-edit-form-dialog.component';
+import { DrawerComponent } from './pages/task/drawer/drawer.component';
+import { ConfirmationDeleteDialogComponent } from './pages/task/confirmation-delete-dialog/confirmation-delete-dialog.component';
+import { CabinetComponent } from './pages/task/cabinet/cabinet.component';
+import { AddSubscriptionDialogComponent } from './pages/task/add-subscription-dialog/add-subscription-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,20 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
     WindowDashboardComponent,
     WindowTasklistComponent,
     CalendarComponent,
+    TaskComponent,
+    TaskEditFormDialogComponent,
+    TaskDialogComponent,
+    TaskListComponent,
+    AlertComponent,
+    ModalComponent,
+    WindowDashboardComponent,
+    WindowTasklistComponent,
+    CalendarComponent,
+    TaskEditFormDialogComponent,
+    DrawerComponent,
+    ConfirmationDeleteDialogComponent,
+    CabinetComponent,
+    AddSubscriptionDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [FolderService],
