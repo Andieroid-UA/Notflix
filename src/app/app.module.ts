@@ -25,6 +25,7 @@ import { DrawerComponent } from './pages/task/drawer/drawer.component';
 import { ConfirmationDeleteDialogComponent } from './pages/task/confirmation-delete-dialog/confirmation-delete-dialog.component';
 import { CabinetComponent } from './pages/task/cabinet/cabinet.component';
 import { AddSubscriptionDialogComponent } from './pages/task/add-subscription-dialog/add-subscription-dialog.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AddSubscriptionDialogComponent } from './pages/task/add-subscription-di
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [FolderService],
   bootstrap: [AppComponent],
