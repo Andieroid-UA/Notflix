@@ -1,63 +1,82 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
-import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
-import { AuthComponent } from './auth/auth.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { TaskComponent } from './pages/task/task/task.component';
-import { TaskDialogComponent } from './pages/task/task-dialog/task-dialog.component';
-import { TaskListComponent } from './pages/task/task-list/task-list.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { AddSubscriptionDialogComponent } from './add-subscription-dialog/add-subscription-dialog.component';
+import { ConfirmationDeleteDialogComponent } from './confirmation-delete-dialog/confirmation-delete-dialog.component';
+import { TaskEditFormDialogComponent } from './task-edit-form-dialog/task-edit-form-dialog.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { DropdownDirective } from './dropdown.directive';
+import { CabinetComponent } from './cabinet/cabinet.component';
+import { DrawerComponent } from './drawer/drawer.component';
+import { AppRoutingModule } from './app-routing.module';
 import { AlertComponent } from './alert/alert.component';
+import { AuthComponent } from './auth/auth.component';
 import { ModalComponent } from './modal/modal.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { TaskComponent } from './pages/task/task/task.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
+import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
-import { FolderService } from './shared/window_format/sidebar/folder.service';
-import { CalendarComponent } from './pages/calendar/calendar.component';
-import { TaskEditFormDialogComponent } from './pages/task/task-edit-form-dialog/task-edit-form-dialog.component';
-import { DrawerComponent } from './pages/task/drawer/drawer.component';
-import { ConfirmationDeleteDialogComponent } from './pages/task/confirmation-delete-dialog/confirmation-delete-dialog.component';
-import { CabinetComponent } from './pages/task/cabinet/cabinet.component';
-import { AddSubscriptionDialogComponent } from './pages/task/add-subscription-dialog/add-subscription-dialog.component';
-import { CommonModule } from '@angular/common';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    NavbarComponent,
+    TaskListComponent,
+    AddSubscriptionDialogComponent,
+    ConfirmationDeleteDialogComponent,
+    TaskEditFormDialogComponent,
+    NavigationComponent,
+    DropdownDirective,
+    CabinetComponent,
+    DrawerComponent,
+    AlertComponent,
     AuthComponent,
-    LoadingSpinnerComponent,
+    ModalComponent,
+    CalendarComponent,
     DashboardComponent,
     TaskComponent,
-    TaskDialogComponent,
-    TaskListComponent,
-    AlertComponent,
-    ModalComponent,
+    LoadingSpinnerComponent,
+    NavbarComponent,
+    SidebarComponent,
     WindowDashboardComponent,
-    WindowTasklistComponent,
-    CalendarComponent,
-    TaskEditFormDialogComponent,
-    DrawerComponent,
-    ConfirmationDeleteDialogComponent,
-    CabinetComponent,
-    AddSubscriptionDialogComponent,
+    WindowTasklistComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
+    BrowserAnimationsModule,
+    CdkTableModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
     ReactiveFormsModule,
-    CommonModule,
+    MatInputModule,
+    MatSelectModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [FolderService],
-  bootstrap: [AppComponent],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

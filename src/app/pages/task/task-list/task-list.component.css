@@ -19,6 +19,7 @@ textarea {
   margin: 35px;
   max-width: 1372px;
 }
+
 /* Header */
 
 /* header {
@@ -60,7 +61,6 @@ textarea {
 .add-button {
   border-radius: 5px;
   font-size: 20px;
-  background-color: rgba(78, 60, 143, 0.5);
 }
 
 /* Table */
@@ -74,7 +74,11 @@ textarea {
   /* margin: auto; */
 }
 
-.add-button:hover {
+button {
+  background-color: rgba(78, 60, 143, 0.5);
+}
+
+button:hover {
   color: white;
   background-color: rgb(34, 67, 99)
 }
