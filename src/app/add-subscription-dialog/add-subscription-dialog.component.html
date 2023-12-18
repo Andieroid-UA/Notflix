@@ -1,0 +1,76 @@
+<!-- look like edit modal -->
+<h1 mat-dialog-title>Add New Subscription</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="formInstance" (ngSubmit)="save()">
+    <div>
+      <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Company</mat-label>
+        <input matInput type="text" name="company" formControlName="company" />
+        <mat-error *ngIf="formInstance.controls['company']?.errors?.required"
+          >field required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="mt-5">
+      <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Billing Date</mat-label>
+        <input matInput type="date" name="date" formControlName="date" />
+        <mat-error *ngIf="formInstance.controls['date']?.errors?.required"
+          >field required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="mt-5">
+      <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select name="type" formControlName="type">
+          <mat-option value="monthly">Monthly</mat-option>
+          <mat-option value="yearly">Yearly</mat-option>
+        </mat-select>
+        <mat-error *ngIf="formInstance.controls['type']?.errors?.required"
+          >field required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput type="text" name="price" formControlName="price" />
+        <mat-error *ngIf="formInstance.controls['price']?.errors?.required"
+          >field required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="mt-5">
+      <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select name="category" formControlName="category">
+          <mat-option value="streaming service">Streaming Service</mat-option>
+          <mat-option value="magazine">Magazine</mat-option>
+          <mat-option value="education">Education</mat-option>
+          <mat-option value="mail service">Mail Service</mat-option>
+                 </mat-select>
+        <mat-error *ngIf="formInstance.controls['category']?.errors?.required"
+          >field required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="mt-5" mat-dialog-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="formInstance.dirty && formInstance.errors"
+        (click)="save()"
+        cdkFocusInitial
+      >
+        Yes
+      </button>
+      <button mat-raised-button mat-dialog-close>No</button>
+    </div>
+  </form>
+</div>

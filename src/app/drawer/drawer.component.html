@@ -1,0 +1,11 @@
+<div class="row justify-between">
+	<!-- <div class="col-md-6"> -->
+		<h1>My Saved Data</h1>
+		<app-task-list></app-task-list>
+	</div>
+  <!-- (currentSelectedTask)="selectedTask=$event" -->
+	<div class="col-md-6">
+		<!-- <app-data-details *ngIf="selectedTask; else infoText" [task]="selectedTask"></app-data-details> -->
+    <ng-template #infoText><p>Please select a service!</p></ng-template>
+	</div>
+  <router-outlet></router-outlet>

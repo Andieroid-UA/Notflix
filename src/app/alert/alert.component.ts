@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AlertComponent {
   @Input() message: string | undefined;
-  @Input() selectedFolder: { name: string, count: number } | undefined;
+  @Input() folders: { name: string, count: number }[] | undefined;
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() deleteFolder: EventEmitter<{ name: string, count: number }> = new EventEmitter<{ name: string, count: number }>();

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { FolderService } from './folder.service';
-import { Folder } from "./folder.model"; // Import the Folder interface
+import { FolderService } from '../folder.service';
+import { Folder } from './folder.model';
 
 @Injectable({
   providedIn: "root"

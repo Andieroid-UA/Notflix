@@ -27,18 +27,18 @@ export class DashboardComponent implements OnInit {
           datasets: [{
               data: [6.5, 3, 6, 8, 5, 2, 4, 9, 2, 5, 3, 2],
               backgroundColor: [
-                '#bc8f8f', 
-                'yellow',            
-                '#faebd7',              
-                '	#7fff00',              
-                '#87cefa',         
-                '	#ffa07a',            
-                '#c0c0c0',        
-                '#ff69b4', //August             
-                '#f0e68c',              
-                '#e6e6fa',            
-                '#20b2aa',            
-                '#ff4500',  
+                '#bc8f8f',
+                'yellow',
+                '#faebd7',
+                '	#7fff00',
+                '#87cefa',
+                '	#ffa07a',
+                '#c0c0c0',
+                '#ff69b4', //August
+                '#f0e68c',
+                '#e6e6fa',
+                '#20b2aa',
+                '#ff4500',
             ]
           }]
       },
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: false 
+                display: false
             },
             title: {
                 display: true,
@@ -62,18 +62,18 @@ export class DashboardComponent implements OnInit {
         scales: {
             x: {
                 grid: {
-                    color: '#dcdcdc' 
+                    color: '#dcdcdc'
                 }
             },
             y: {
                 grid: {
-                    color: '#dcdcdc' 
+                    color: '#dcdcdc'
                 }
             }
         }
     }
 });
-  
+
 
 // For Donut Chart, need to convert numbers to percentages
 // Declare variables
@@ -113,7 +113,7 @@ const donutChart = new Chart('donutChartCanvas', {
                 }
             }
         }
-    
+
     }
 });
   }

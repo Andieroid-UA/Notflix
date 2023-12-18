@@ -1,18 +1,25 @@
 <div class="backdrop">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Confirmation</h5>
-      <button type="button" class="close" (click)="onCloseModal()">
+      <h5 class="modal-title">Select the Folder you Want to Delete</h5>
+      <!-- <button type="button" class="close" (click)="onCloseModal()">
         <span aria-hidden="true">&times;</span>
-      </button>
+      </button> -->
     </div>
     <div class="modal-body">
       <p>{{ message }}</p>
-      <p *ngIf="selectedFolder">Folder to delete: {{ selectedFolder.name }}</p>
+      <div *ngIf="folders && folders.length > 0">
+        <ul>
+          <li *ngFor="let folder of folders">
+            <button type="button" class="btn btn-danger" (click)="onDeleteFolder(folder)">
+              DELETE {{ folder.name }} Folder
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="onCloseModal()">Close</button>
-      <button *ngIf="selectedFolder" type="button" class="btn btn-danger" (click)="onDeleteFolder(selectedFolder)">Delete Folder</button>
+      <button type="button" class="btn btn-secondary" (click)="onCloseModal()">CANCEL</button>
     </div>
   </div>
 </div>
