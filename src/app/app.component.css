@@ -74,10 +74,6 @@ textarea {
   /* margin: auto; */
 }
 
-button {
-  background-color: rgba(78, 60, 143, 0.5);
-}
-
 button:hover {
   color: white;
   background-color: rgb(34, 67, 99)

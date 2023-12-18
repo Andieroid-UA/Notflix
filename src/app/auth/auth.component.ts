@@ -41,7 +41,7 @@ export class AuthComponent {
       (resData) => {
         console.log(resData);
         this.isLoading = false;
-        this.router.navigate(['/tasklist']);
+        this.router.navigate(['/calendar']);
       },
       (errorMessage) => {
         console.log(errorMessage);

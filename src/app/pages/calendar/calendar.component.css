@@ -4,5 +4,9 @@
 }
 
 .container-fluid {
-  width: 100vw;
+  width: 102.5vw;
+  height: 100vh;
+  margin-left: -10rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }

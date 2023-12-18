@@ -33,7 +33,7 @@ import { NavbarComponent } from './shared/window_format/navbar/navbar.component'
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { WindowDashboardComponent } from './shared/window_format/window-dashboard/window-dashboard.component';
 import { WindowTasklistComponent } from './shared/window_format/window-tasklist/window-tasklist.component';
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,7 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

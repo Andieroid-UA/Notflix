@@ -9,9 +9,9 @@ import { TaskListComponent } from "./task-list/task-list.component";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/auth", pathMatch: "full" },
+  { path: 'auth', component: AuthComponent },
   { path: "drawer", component: DrawerComponent,},
   { path: "cabinet", component: CabinetComponent },
-  { path: 'auth', component: AuthComponent },
   { path: 'tasklist', component: TaskListComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'calendar', component: CalendarComponent },
