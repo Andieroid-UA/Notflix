@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+onSaveData() {
+throw new Error('Method not implemented.');
+}
+
+show: any;
+
 }

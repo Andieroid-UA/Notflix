@@ -5,16 +5,50 @@
         <img src="assets/img/logo.png" alt="Trial Tracker Logo" width="160" height="90" class="me-2" />
       </a>
       <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+
+
         <li class="font">
           <a href="/tasklist" class="nav-link text-white">
             <button class="btn" width="24" height="24">Tasklist</button>
           </a>
         </li>
+
+
+
         <li class="font">
           <a href="/dashboard" class="nav-link text-white">
             <button class="btn" width="24" height="24">Dashboard</button>
           </a>
         </li>
+
+          <li class="nav-item dropdown user-container" appDropdown>
+            <!-- href="#" -->
+            <a
+            class="nav-link dropdown-toggle"
+            style="cursor: pointer"
+            id="navbarDropdownMenuLink"
+            type="button"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            [attr.aria-expanded]="show"
+            (click)="show = !show"
+            [class.show]="show">
+
+            User
+
+            <img class="profile-picture" src="./assets/img/freckles250x250.jpg" alt="Profile Picture">
+            </a>
+            <ul class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="/auth"><img src="./assets/img/Google_icon_logout.svg" alt="Logout Icon">Logout</a></li>
+              <li><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
+            </ul>
+        </li>
+
+
+
+
       </ul>
     </div>
   </div>
