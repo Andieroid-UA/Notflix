@@ -19,35 +19,6 @@ textarea {
   margin: 35px;
   max-width: 1372px;
 }
-/* Header */
-
-/* header {
-  position: relative;
-  top: 0;
-  height: 25vh;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-container {
-  width: 25vw;
-  margin-top: 8px;
-  box-sizing: border-box;
-  border: 2px solid black;
-  border-radius: 5px;
-  padding: 20px;
-  justify-content: space-evenly;
-}
-
- .user-details {
-  margin-top: 8px;
-}
-
-.profile-dropdown {
-  margin-top: 9px;
-  margin-left: 2px;
-} */
 
 /* Add New Subscription Button */
 
@@ -63,6 +34,11 @@ textarea {
   background-color: rgba(78, 60, 143, 0.5);
 }
 
+.add-button:hover {
+  color: white;
+  background-color: rgb(34, 67, 99)
+}
+
 /* Table */
 
 .table-container {
@@ -72,9 +48,4 @@ textarea {
   position: relative;
   right: 0px;
   /* margin: auto; */
-}
-
-.add-button:hover {
-  color: white;
-  background-color: rgb(34, 67, 99)
 }

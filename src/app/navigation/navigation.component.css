@@ -1,3 +1,12 @@
+nav {
+  position: relative;
+  top: 0;
+  height: 25vh;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
 .tracker-logo {
   width: 20vw;
   margin: 2px;
@@ -12,4 +21,23 @@
   border-radius: 60%;
   overflow: hidden;
   object-fit: cover;
+}
+
+.user-container {
+  width: 25vw;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+
+ .user-details {
+  margin-top: 8px;
+}
+
+.profile-dropdown {
+  margin-top: 9px;
+  margin-left: 2px;
 }
