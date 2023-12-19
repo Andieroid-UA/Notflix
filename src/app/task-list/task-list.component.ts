@@ -13,11 +13,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
-import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
+
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/add-subscription-dialog.component';
+import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
 
 @Component({
   selector: 'app-task-list',
@@ -69,18 +70,37 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   }); */
   }
 
-  edit(data: Task) {
+ // edit(data: Task) {
+   // const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
+     // width: '400px',
+     // data: data,
+   // });
+
+   // dialogRef.afterClosed().subscribe((result) => {
+    //  if (result) {
+    //    this.taskService.edit(result);
+    //  }
+   // });
+  //}
+
+  edit(task: Task): void {
+
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
-      data: data,
+      data: { ...task }
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(result => {
+  
       if (result) {
-        this.taskService.edit(result);
+        this.taskService.edit(result); 
       }
     });
   }
+
+
+
+
 
   delete(id: any) {
     const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
