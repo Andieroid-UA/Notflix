@@ -31,12 +31,12 @@ textarea {
 .add-button {
   border-radius: 5px;
   font-size: 20px;
-  background-color: rgba(78, 60, 143, 0.5);
+  background-color: aquamarine;
 }
 
 .add-button:hover {
   color: white;
-  background-color: rgb(34, 67, 99)
+  background-color: mediumslateblue;
 }
 
 /* Table */
