@@ -1,23 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
-
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 
 input,
 button,
 textarea {
-    font: inherit;
+  font: inherit;
+}
+
+button.add-button {
+  margin-bottom: 5px;
+  background-color: #4eacc9;
+  border: solid #4eacc9;
 }
 
 .tasklist-container {
   height: 100vh;
   margin: 35px;
   max-width: 1372px;
+}
+
+body {
+  background-color: #413e3e;
 }
 /* Header */
 
@@ -76,5 +78,5 @@ textarea {
 
 .add-button:hover {
   color: white;
-  background-color: rgb(34, 67, 99)
+  background-color: rgb(34, 67, 99);
 }

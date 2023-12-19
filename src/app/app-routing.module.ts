@@ -1,18 +1,20 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { AuthComponent } from "./auth/auth.component";
-import { CalendarComponent } from "./pages/calendar/calendar.component";
-import { WindowDashboardComponent } from "./pages/window-dashboard/window-dashboard.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
+import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
+import { WindowCalendarComponent } from './pages/window-calendar/window-calendar.component';
+import { WindowSubscriptionsComponent } from './pages/window-subscriptions/window-subscriptions.component';
 
 const appRoutes: Routes = [
-  { path: "", redirectTo: "/auth", pathMatch: "full" },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
-  { path: 'tasklist', component: CalendarComponent },
+  { path: 'subscriptions', component: WindowSubscriptionsComponent },
   { path: 'dashboard', component: WindowDashboardComponent },
+  { path: 'calendar', component: WindowCalendarComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

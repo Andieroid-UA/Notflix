@@ -32,6 +32,8 @@ import { NavbarComponent } from './shared/window_format/navbar/navbar.component'
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
+import { WindowCalendarComponent } from './pages/window-calendar/window-calendar.component';
+import { WindowSubscriptionsComponent } from './pages/window-subscriptions/window-subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
     SidebarComponent,
     WindowDashboardComponent,
     AlertComponent,
+    WindowCalendarComponent,
+    WindowSubscriptionsComponent,
 
   ],
   imports: [
