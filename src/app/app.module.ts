@@ -22,9 +22,7 @@ import { DropdownDirective } from './dropdown.directive';
 import { CabinetComponent } from './cabinet/cabinet.component';
 // import { DrawerComponent } from './drawer/drawer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AlertComponent } from './alert/alert.component';
 import { AuthComponent } from './auth/auth.component';
-import { ModalComponent } from './modal/modal.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -45,14 +43,12 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
     CabinetComponent,
     // DrawerComponent,
     AuthComponent,
-    ModalComponent,
     CalendarComponent,
     DashboardComponent,
     LoadingSpinnerComponent,
     NavbarComponent,
     SidebarComponent,
     WindowDashboardComponent,
-    AlertComponent,
 
   ],
   imports: [

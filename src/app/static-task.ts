@@ -1,4 +1,4 @@
-// import { Task } from "./task.model";
+// import { Task } from "../Model.task.model";
 
 //   export const staticTask : Task[] = [
 //     new Task('Netflix', '12/31/2023', 'monthly', '$12.99', 'Streaming Service'),

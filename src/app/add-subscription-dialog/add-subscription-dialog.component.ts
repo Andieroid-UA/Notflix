@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
-import { TaskService } from '../task.service';
+import { TaskService } from '../Services/task.service';
 
 
 
@@ -35,4 +35,4 @@ export class AddSubscriptionDialogComponent {
       this.dialogRef.close();
     }
   }
-}  
+}

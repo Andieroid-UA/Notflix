@@ -1,5 +1,6 @@
 
 export interface Task {
+  tasks: any;
   id: number;
   company: string;
   date: string;

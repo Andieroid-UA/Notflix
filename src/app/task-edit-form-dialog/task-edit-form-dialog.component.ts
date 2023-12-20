@@ -32,7 +32,7 @@
 
 //    save(): void {
 //     this.dialogRef.close({...this.formInstance.value});
-//   } 
+//   }
 // }
 
 
@@ -41,8 +41,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Task } from '../task.model';
-import { TaskService } from '../task.service';
+import { Task } from '../Models/task.model';
+import { TaskService } from '../Services/task.service';
 
 
 @Component({
@@ -59,7 +59,7 @@ export class TaskEditFormDialogComponent implements OnInit {
 /*   dialogRef: any;
   constructor(
     public dialog: MatDialog,
-    private taskService: TaskService 
+    private taskService: TaskService
   ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
@@ -68,7 +68,7 @@ export class TaskEditFormDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TaskEditFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private taskService: TaskService 
+    private taskService: TaskService
   ) {
     this.formInstance = new FormGroup({
       company: new FormControl(this.data.company, Validators.required),
@@ -94,7 +94,7 @@ export class TaskEditFormDialogComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.taskService.edit(result); 
+        this.taskService.edit(result);
       }
     });
 
@@ -102,7 +102,7 @@ export class TaskEditFormDialogComponent implements OnInit {
   }
   save(): void {
     this.dialogRef.close({...this.formInstance.value});
-  } 
+  }
 
 
 }

@@ -14,11 +14,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
 
-import { TaskService } from '../task.service';
-import { Task } from '../task.model';
+import { TaskService } from '../Services/task.service';
+import { Task } from '../Models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/add-subscription-dialog.component';
+import { AddSubscriptionDialogComponent } from '../add-subscription-dialog/add-subscription-dialog.component';
 import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
+import { AlertComponent } from '../alert/alert.component';
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-task-list',
@@ -34,6 +36,12 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   handleSelectedData(data: Task) {
     this.currentSelectedData.emit(data);
   }; */
+
+  private folders = [
+    { name: 'Trials', count: 0 },
+    { name: 'All', count: 1 },
+    // ... other folders
+  ];
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -52,36 +60,84 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef
   ) {
     this.dataSource = new MatTableDataSource<Task>();
   }
 
+  newFolderName: string = '';
+  errorMessage: string = '';
+  showDeleteModal = false;
+
+
+  // We can attach this to display different data in the main window/table
+  folderClicked(folder: { name: string; count: number }): void {
+    console.log(`Clicked folder: ${folder.name}`);
+  }
+
+//The longest app we can place could be "This_is_an_exam"
+
+  addNewFolder(folderName: string): void {
+    if (folderName.trim() !== '') {
+      if (folderName.trim().length <= 15) {
+        const newFolder = { name: folderName, count: 0 };
+        this.folders.push(newFolder);
+        this.errorMessage = '';
+
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
+      } else {
+        this.errorMessage = 'Folder name must be 15 characters or less';
+
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
+      }
+    } else {
+      this.errorMessage = 'Folder name cannot be empty';
+
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2000);
+    }
+  }
+
+  deleteFolderClicked(): void {
+    if (this.folders.length === 0) {
+      // Display an error message when there are no folders to delete
+      this.errorMessage = 'There are no folders to delete';
+
+      // Reset error message after 3 seconds (adjust timing as needed)
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
+    } else {
+      const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+      const componentRef = this.viewContainerRef.createComponent(alertComponentFactory);
+
+      componentRef.instance.folders = this.folders; // Pass the folders data to the modal component
+
+      componentRef.instance.deleteFolder.subscribe((folderToDelete: { name: string; count: number }) => {
+        const index = this.folders.findIndex(f => f === folderToDelete);
+        if (index !== -1) {
+          this.folders.splice(index, 1); // Delete the selected folder
+        }
+        componentRef.destroy();
+      });
+
+      componentRef.instance.closeModal.subscribe(() => {
+        componentRef.destroy();
+      });
+    }
+  }
+
   openDialog() {
-    /* this.router.navigate(['new'], { relativeTo: this.route }); */
     this.dialog.open(AddSubscriptionDialogComponent, {
       width: '400px',
     });
-    /*  dialog.afterClosed().subscribe(result => {
-    if (result) {
-      this.dataService.add(result);
-    }
-  }); */
   }
-
- // edit(data: Task) {
-   // const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
-     // width: '400px',
-     // data: data,
-   // });
-
-   // dialogRef.afterClosed().subscribe((result) => {
-    //  if (result) {
-    //    this.taskService.edit(result);
-    //  }
-   // });
-  //}
 
   edit(task: Task): void {
 
@@ -91,15 +147,12 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-  
+
       if (result) {
-        this.taskService.edit(result); 
+        this.taskService.edit(result);
       }
     });
   }
-
-
-
 
 
   delete(id: any) {
@@ -117,11 +170,13 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+
+
   /**
    * initialize data-table by providing persons list to the dataSource.
    */
   ngOnInit(): void {
-    this.taskService.getAll();
+    this.taskService.getTasks();
     this.serviceSubscribe = this.taskService.task$.subscribe((res) => {
       this.dataSource.data = res;
     });
@@ -131,7 +186,7 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.serviceSubscribe.unsubscribe();
   }
   private filter() {
-    this.dataSource.filterPredicate = (data: Task, filter: string) => {
+    this.dataSource.filterPredicate = (data: Task) => {
       let find = true;
 
       for (var columnName in this.columnsFilters) {
@@ -225,4 +280,8 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.filter();
     }
   }
+
+
+
+
 }
