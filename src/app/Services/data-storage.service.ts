@@ -22,12 +22,24 @@ export class DataStorageService {
 
   // Method- Save tasks
   storeTasks() {
-    const books = this.taskService.getTasks();
+    let tasks;
+    this.taskService.getTasks().subscribe(data => {
+      tasks = data;
+    });
 
-    this.http.put(this.firebaseRootURL, books).subscribe(res => {
+    this.http.put(this.firebaseRootURL, tasks).subscribe(res => {
       console.log("Firebase DB Response:", res);
     });
   }
+
+
+  // storeTasks() {
+  //   const books = this.taskService.getTasks();
+
+  //   this.http.put(this.firebaseRootURL, books).subscribe(res => {
+  //     console.log("Firebase DB Response:", res);
+  //   });
+  // }
 
   // Method- Fetch tasks
   fetchTasks() {
