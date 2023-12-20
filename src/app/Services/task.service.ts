@@ -7,7 +7,11 @@ import { Task } from '../Models/task.model';
   providedIn: 'root'
 })
 export class TaskService {
+
+  tasksChanged = new BehaviorSubject<Task[]>([]);
+
   public task$: BehaviorSubject<Task[]>;
+
   private task: Task[] = [];
   folders: { name: string, count: number }[] = [];
 
@@ -28,8 +32,17 @@ export class TaskService {
     }
   }
 
+  setTasks(tasks: Task[]) {
+    this.task = tasks;
+    this.tasksChanged.next(this.task.slice());
+  }
+
   getTasks(): BehaviorSubject<Task[]> {
     return this.task$;
+  }
+
+  getTask(index: number) {
+    return this.task[index];
   }
 
   add(task: Task): void {
@@ -53,6 +66,16 @@ export class TaskService {
   remove(company: string): void {
     this.task = this.task.filter(p => p.company !== company);
     this.task$.next(this.task);
+  }
+
+  updateRecipe(index: number, newRecipe: Task) {
+    this.task [index] = newRecipe;
+    this.tasksChanged.next(this.task.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.task.splice(index, 1);
+    this.tasksChanged.next(this.task.slice());
   }
 
   getFolders(folders: { name: string; count: number }[]): { name: string; count: number }[] {

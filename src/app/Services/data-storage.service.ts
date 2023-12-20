@@ -42,7 +42,7 @@ export class DataStorageService {
           });
         }),
         tap(tasks => {
-          this.taskService.getTasks().next(tasks);
+          this.taskService.getTasks().next(tasks); // Pass the tasks as an argument
         })
       )
       .subscribe(() => {
