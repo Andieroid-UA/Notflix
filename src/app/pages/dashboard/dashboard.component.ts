@@ -1,6 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Chart} from 'chart.js';
+
+export interface Company {
+    Company: string;
+    Date: string;
+    Type: string;
+    Price: string;
+    Category: string;
+  }
+  
+  const COMPANY_DATA: Company[] = [
+    {Company: '', Date: '', Type: '', Price: '', Category: ''},
+  
+  ];
+
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +25,18 @@ import { Chart} from 'chart.js';
 
 export class DashboardComponent implements OnInit {
 
-  barChart: Chart | undefined;
-  donutChart: Chart | undefined;
+    displayedColumns: string[] = ['Company', 'Date', 'Type', 'Price', 'Category'];
+    dataSource = new MatTableDataSource<Company>(COMPANY_DATA);
+  
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  
+    barChart: Chart;
+    donutChart: Chart;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.initializeCharts();
-  }
+    ngOnInit() {
+       this.dataSource.paginator = this.paginator;
+       this.initializeCharts();
+   }
 
   initializeCharts(): void {
     const barChart = new Chart('barChartCanvas', {
@@ -113,12 +132,11 @@ const donutChart = new Chart('donutChartCanvas', {
                 }
             }
         }
-
-    }
-});
+    
+        }
+    });
   }
 }
-
 
 
 

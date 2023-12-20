@@ -6,8 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { CdkTableModule } from '@angular/cdk/table';
-import { MatTableModule } from '@angular/material/table';
+// import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
@@ -20,7 +21,7 @@ import { TaskEditFormDialogComponent } from './task-edit-form-dialog/task-edit-f
 import { NavigationComponent } from './navigation/navigation.component';
 import { DropdownDirective } from './dropdown.directive';
 import { CabinetComponent } from './cabinet/cabinet.component';
-import { DrawerComponent } from './drawer/drawer.component';
+// import { DrawerComponent } from './drawer/drawer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlertComponent } from './alert/alert.component';
 import { AuthComponent } from './auth/auth.component';
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     TaskListComponent,
@@ -43,7 +45,7 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
     NavigationComponent,
     DropdownDirective,
     CabinetComponent,
-    DrawerComponent,
+    // DrawerComponent,
     AuthComponent,
     ModalComponent,
     CalendarComponent,
@@ -58,9 +60,10 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CdkTableModule,
+    // CdkTableModule,
     MatTableModule,
     MatPaginatorModule,
+
     MatSortModule,
     MatMenuModule,
     MatIconModule,
