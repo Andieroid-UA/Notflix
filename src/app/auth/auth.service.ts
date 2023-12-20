@@ -16,7 +16,11 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+
   user = new BehaviorSubject<User>(null);
+
+
   private tokenExpirationTimer: any;
 
 
@@ -41,7 +45,7 @@ export class AuthService {
           resData.idToken,
           +resData.expiresIn
           );
-    })
+        })
     );
   }
 
@@ -67,6 +71,18 @@ export class AuthService {
     );
   }
 
+  private handleAuthentication(
+    email : string,
+    userId: string,
+    token: string,
+    expiresIn: number
+    ) {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, userId, token, expirationDate);
+    this.user.next(user);
+  }
+
+
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
@@ -81,16 +97,6 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
-  }
-
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    this.user.next(user);
   }
 
   private handleError(errorRes: HttpErrorResponse) {

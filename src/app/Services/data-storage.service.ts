@@ -32,7 +32,12 @@ export class DataStorageService {
       take(1),
       exhaustMap(user => {
       return this.http.get<Task[]>(
-        'https://trialtracker-f66c4-default-rtdb.firebaseio.com/tasks.json'
+        'https://trialtracker-f66c4-default-rtdb.firebaseio.com/tasks.json',
+        {
+          params: {
+            auth: user.token
+          }
+        }
       );
     }),
       map(tasks => {
