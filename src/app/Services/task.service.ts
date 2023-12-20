@@ -32,9 +32,10 @@ export class TaskService {
   }
 
   //*****************************Test function to see if local storage works****************************************//
-  // setItem(key: string, value: string): void {
-  //   localStorage.setItem(key, value);
-  // }
+  setItem(key: string, value: string): void {
+    localStorage.setItem(key, value);
+  }
+ //*********************************************** **************************************************************//
 
   private initFolders(): void {
     const folderToUpdate = this.folders.find(folder => folder.name === 'Trials');
@@ -97,7 +98,6 @@ export class TaskService {
   }
 
   getFolders(folders: { name: string; count: number }[]): { name: string; count: number }[] {
-    // You can modify this function to fetch folders from an API if needed
     this.folders = folders; // Assign the passed folders to the local variable
     return this.folders;
   }
@@ -107,7 +107,6 @@ export class TaskService {
     // Logic to add a new folder
     const newFolder = { name: folderName, count: 0 };
     this.folders.push(newFolder);
-    // Potentially, perform actions after adding the folder
   }
 
 

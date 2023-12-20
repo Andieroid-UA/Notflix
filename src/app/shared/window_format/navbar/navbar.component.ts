@@ -18,7 +18,6 @@ export class NavbarComponent implements OnInit, OnDestroy{
   private userSub: Subscription;
   private taskSub: Subscription;
   show: any;
-  taskService: any;
   myTasks: Task[];
 
   constructor(
@@ -26,7 +25,10 @@ export class NavbarComponent implements OnInit, OnDestroy{
     private authService: AuthService,
 
   //*****************************Test function to see if local storage works****************************************
-    // private taskService: TaskService,
+
+  private taskService: TaskService,
+
+  //*********************************************** **************************************************************//
 
   ) {}
 
@@ -65,8 +67,10 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
 //*****************************Test function to see if local storage works****************************************
 
-  // setValue() {
-  //   this.taskService.setItem('my_thing', 'something');
-  // }
+  setValue() {
+    this.taskService.setItem('my_thing', 'something');
+  }
+
+//*********************************************** **************************************************************//
 
 }
