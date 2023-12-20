@@ -1,24 +1,16 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild,} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
-
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/add-subscription-dialog.component';
 import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
+import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
+
 
 @Component({
   selector: 'app-task-list',
@@ -29,11 +21,6 @@ import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-
 export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
- /*  @Output() currentSelectedData = new EventEmitter<TaskEditFormDialogComponent>();
-
-  handleSelectedData(data: Task) {
-    this.currentSelectedData.emit(data);
-  }; */
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -59,37 +46,21 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   openDialog() {
-    /* this.router.navigate(['new'], { relativeTo: this.route }); */
+  
     this.dialog.open(AddSubscriptionDialogComponent, {
       width: '400px',
     });
-    /*  dialog.afterClosed().subscribe(result => {
-    if (result) {
-      this.dataService.add(result);
-    }
-  }); */
+
   }
 
- // edit(data: Task) {
-   // const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
-     // width: '400px',
-     // data: data,
-   // });
 
-   // dialogRef.afterClosed().subscribe((result) => {
-    //  if (result) {
-    //    this.taskService.edit(result);
-    //  }
-   // });
-  //}
+ /*  Editing A Task Dialog Box */
 
   edit(task: Task): void {
-
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
       data: { ...task }
     });
-
     dialogRef.afterClosed().subscribe(result => {
   
       if (result) {
@@ -99,18 +70,34 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
 
+/*  Deleting A Task Dialog Box */
+ 
+  delete(company: string): void {
+    const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent, {
+      width: '250px',
+      data: {company: company }
+    });
 
-
-
-  delete(id: any) {
-    const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.taskService.remove(id);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === company) { 
+        this.taskService.delete(company);
       }
     });
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

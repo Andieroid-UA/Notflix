@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Task } from './task.model';
-// import { staticTask } from './static-task';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,26 +13,14 @@ export class TaskService {
 
   constructor() {
     this.task$ = new BehaviorSubject([]);
-    // this.task = staticTask;
+   
   }
 
   getAll() {
     this.task$.next(this.task);
   }
 
-  // add(task: Task) {
-  //   this.task.push(task);
-  //   let findElem = this.task.find(p => p.company == task.company);
-
-  //   findElem.company = task.company;
-  //   findElem.date = task.date;
-  //   findElem.type = task.type;
-  //   findElem.price = task.price;
-  //   findElem.category = task.category;
-
-  //   this.task$.next(this.task);
-  // }
-
+   /* Add A Subscription */
   add(task: Task) {
     let existingTask = this.task.find(p => p.company === task.company);
     if (existingTask) {
@@ -50,17 +38,8 @@ export class TaskService {
   }
   
 
-  // edit(task: Task) {
-  //   let findElem = this.task.find(p => p.company == task.company);
 
-  //   findElem.company = task.company;
-  //   findElem.date = task.date;
-  //   findElem.type = task.type;
-  //   findElem.price = task.price;
-
-  //   this.task$.next(this.task);
-  // }
-
+   /* Edit A Subscription */
   edit(updatedTask: Task) {
     const taskIndex = this.task.findIndex(t => t.company === updatedTask.company);
     if (taskIndex !== -1) {
@@ -70,16 +49,12 @@ export class TaskService {
   }
 
 
+   /* Delete A Subscription */
 
-
-
-
-
-  remove(company: string) {
-    this.task = this.task.filter(p => {
-      return p.company != company
-    });
-
+  delete(company: string) {
+    this.task = this.task.filter(task => task.company !== company); 
     this.task$.next(this.task);
   }
+
+
 }
