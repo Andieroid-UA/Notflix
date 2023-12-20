@@ -28,6 +28,7 @@ import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 })
 
 export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
  /*  @Output() currentSelectedData = new EventEmitter<TaskEditFormDialogComponent>();

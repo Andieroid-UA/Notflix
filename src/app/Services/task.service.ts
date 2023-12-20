@@ -6,6 +6,7 @@ import { Task } from '../Models/task.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TaskService {
 
   tasksChanged = new BehaviorSubject<Task[]>([]);
@@ -15,6 +16,7 @@ export class TaskService {
   private task: Task[] = [];
   folders: { name: string, count: number }[] = [];
 
+
   constructor(private http: HttpClient) {
     this.task$ = new BehaviorSubject<Task[]>([]);
     this.initFolders();
@@ -23,7 +25,13 @@ export class TaskService {
     if (folderToUpdate) {
       folderToUpdate.count += 1; // Update the count as needed
     }
+
   }
+
+  //*****************************Test function to see if local storage works****************************************//
+  // setItem(key: string, value: string): void {
+  //   localStorage.setItem(key, value);
+  // }
 
   private initFolders(): void {
     const folderToUpdate = this.folders.find(folder => folder.name === 'Trials');

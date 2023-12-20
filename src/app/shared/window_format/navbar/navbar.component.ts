@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { DataStorageService } from '../../../Services/data-storage.service';
 import { AuthService } from '../../../auth/auth.service';
 
+import { TaskService } from '../../../Services/task.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -17,7 +19,12 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
   constructor(
     private dataStorageService: DataStorageService,
-    private authService: AuthService
+    private authService: AuthService,
+
+
+  //*****************************Test function to see if local storage works****************************************
+    // private taskService: TaskService,
+
   ) {}
 
   ngOnInit() {
@@ -43,4 +50,11 @@ export class NavbarComponent implements OnInit, OnDestroy{
   ngOnDestroy() {
     this.userSub.unsubscribe();
   }
+
+//*****************************Test function to see if local storage works****************************************
+
+  // setValue() {
+  //   this.taskService.setItem('my_thing', 'something');
+  // }
+
 }
