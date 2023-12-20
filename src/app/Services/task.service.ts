@@ -14,7 +14,10 @@ export class TaskService {
   public task$: BehaviorSubject<Task[]>;
 
   private task: Task[] = [];
+
   folders: { name: string, count: number }[] = [];
+
+  private myTasks: Task[] = [];
 
 
   constructor(private http: HttpClient) {
@@ -40,10 +43,17 @@ export class TaskService {
     }
   }
 
-  setTasks(tasks: Task[]) {
-    this.task = tasks;
-    this.tasksChanged.next(this.task.slice());
-  }
+  // setTasks(tasks: Task[]) {
+  //   this.task = tasks;
+  //   this.tasksChanged.next(this.task.slice());
+  // }
+
+  setTasks(tasks: Task[] | []) {
+    console.log('%c  books: ', 'color: red;', tasks);
+
+    this.myTasks = tasks || [];
+    this.tasksChanged.next(this.myTasks.slice());
+}
 
   getTasks(): BehaviorSubject<Task[]> {
     return this.task$;

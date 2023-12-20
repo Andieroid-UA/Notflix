@@ -31,17 +31,6 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
- /*  @Output() currentSelectedData = new EventEmitter<TaskEditFormDialogComponent>();
-
-  handleSelectedData(data: Task) {
-    this.currentSelectedData.emit(data);
-  }; */
-
-  private folders = [
-    { name: 'Trials', count: 0 },
-    { name: 'All', count: 1 },
-    // ... other folders
-  ];
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -66,17 +55,9 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource = new MatTableDataSource<Task>();
   }
 
-  newFolderName: string = '';
-  errorMessage: string = '';
-  showDeleteModal = false;
-
-
-  // We can attach this to display different data in the main window/table
-  folderClicked(folder: { name: string; count: number }): void {
-    console.log(`Clicked folder: ${folder.name}`);
-  }
-
-//The longest app we can place could be "This_is_an_exam"
+  // newFolderName: string = '';
+  // errorMessage: string = '';
+  // showDeleteModal = false;
 
   openDialog() {
     this.dialog.open(AddSubscriptionDialogComponent, {
@@ -115,8 +96,6 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-
-
   /**
    * initialize data-table by providing persons list to the dataSource.
    */
@@ -130,6 +109,7 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.serviceSubscribe.unsubscribe();
   }
+
   private filter() {
     this.dataSource.filterPredicate = (data: Task) => {
       let find = true;
@@ -226,5 +206,12 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  //Old code for the folder storage
+
+    // We can attach this to display different data in the main window/table
+
+    // folderClicked(folder: { name: string; count: number }): void {
+    //   console.log(`Clicked folder: ${folder.name}`);
+    // }
 
 }
