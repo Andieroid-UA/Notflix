@@ -49,7 +49,7 @@ export class TaskService {
   // }
 
   setTasks(tasks: Task[] | []) {
-    console.log('%c  books: ', 'color: red;', tasks);
+    console.log('%c  tasks: ', 'color: red;', tasks);
 
     this.myTasks = tasks || [];
     this.tasksChanged.next(this.myTasks.slice());
