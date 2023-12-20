@@ -87,16 +87,6 @@ export class TaskService {
     this.task$.next(this.task);
   }
 
-  updateRecipe(index: number, newRecipe: Task) {
-    this.task [index] = newRecipe;
-    this.tasksChanged.next(this.task.slice());
-  }
-
-  deleteRecipe(index: number) {
-    this.task.splice(index, 1);
-    this.tasksChanged.next(this.task.slice());
-  }
-
   getFolders(folders: { name: string; count: number }[]): { name: string; count: number }[] {
     this.folders = folders; // Assign the passed folders to the local variable
     return this.folders;

@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
   //*****************************Test function to see if local storage works****************************************
 
-  private taskService: TaskService,
+    private taskService: TaskService,
 
   //*********************************************** **************************************************************//
 
