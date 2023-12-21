@@ -30,10 +30,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { NavbarComponent } from './shared/window_format/navbar/navbar.component';
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 import { WindowCalendarComponent } from './pages/window-calendar/window-calendar.component';
 import { WindowSubscriptionsComponent } from './pages/window-subscriptions/window-subscriptions.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,6 @@ import { WindowSubscriptionsComponent } from './pages/window-subscriptions/windo
     AlertComponent,
     WindowCalendarComponent,
     WindowSubscriptionsComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -77,7 +77,13 @@ import { WindowSubscriptionsComponent } from './pages/window-subscriptions/windo
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptorService,
+    //   multi: true,
+    // },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

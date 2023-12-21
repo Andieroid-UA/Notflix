@@ -12,6 +12,11 @@ button.add-button {
   border: solid #4eacc9;
 }
 
+button.add-button:hover {
+  background-color: #4eacc9b6;
+  border: solid #4eacc9b6;
+}
+
 .tasklist-container {
   height: 100vh;
   margin: 35px;

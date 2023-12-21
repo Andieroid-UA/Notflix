@@ -7,7 +7,7 @@ import { WindowSubscriptionsComponent } from './pages/window-subscriptions/windo
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/subscriptions', pathMatch: 'full' },
+  /* { path: '', redirectTo: '/subscriptions', pathMatch: 'full' },
   {
     path: 'subscriptions',
     component: WindowSubscriptionsComponent,
@@ -23,12 +23,12 @@ const appRoutes: Routes = [
     component: WindowCalendarComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'auth', component: AuthComponent }, */
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
-  // { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  // { path: 'auth', component: AuthComponent },
-  // { path: 'subscriptions', component: WindowSubscriptionsComponent },
-  // { path: 'dashboard', component: WindowDashboardComponent },
-  // { path: 'calendar', component: WindowCalendarComponent },
+  { path: 'subscriptions', component: WindowSubscriptionsComponent },
+  { path: 'dashboard', component: WindowDashboardComponent },
+  { path: 'calendar', component: WindowCalendarComponent },
 ];
 
 @NgModule({
