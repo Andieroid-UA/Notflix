@@ -30,9 +30,17 @@ export class AddSubscriptionDialogComponent {
 
   save(): void {
     if (this.formInstance.valid) {
-
-      this.taskService.add(this.formInstance.value);
+      var newTask = this.formInstance.value;
+      var newId = 1;
+      if( this.taskService.task.length > 1)
+      {
+        var max = this.taskService.task.reduce((prev, current) => (prev && prev.id > current.id) ? prev : current);
+        console.log("max", max);
+        newId = max.id + 1;
+      }
+      newTask.id = newId;
+      this.taskService.add(newTask);
       this.dialogRef.close();
     }
   }
-}  
+}
