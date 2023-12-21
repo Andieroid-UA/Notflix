@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild,} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,6 +13,11 @@ import { AddSubscriptionDialogComponent } from '../add-subscription-dialog/add-s
 import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
 import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
+
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
@@ -23,6 +28,9 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -45,6 +53,11 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     private viewContainerRef: ViewContainerRef
   ) {
     this.dataSource = new MatTableDataSource<Task>();
+
+    console.log("firestore", this.firestore);
+    const aCollection = collection(this.firestore, 'items')
+    this.items$ = collectionData(aCollection);
+    console.log("items", this.items$);
   }
 
   // newFolderName: string = '';
@@ -64,7 +77,9 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
 
+
       if (result) {
+        this.taskService.edit(result);
         this.taskService.edit(result);
       }
     });

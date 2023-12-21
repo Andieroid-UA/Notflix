@@ -31,10 +31,21 @@ import { NavbarComponent } from './shared/window_format/navbar/navbar.component'
 import { SidebarComponent } from './shared/window_format/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider, provideAppCheck } from '@angular/fire/app-check';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { getFunctions, provideFunctions } from '@angular/fire/functions';
+import { getMessaging, provideMessaging } from '@angular/fire/messaging';
+import { getPerformance, providePerformance } from '@angular/fire/performance';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
 
 
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     TaskListComponent,
@@ -72,8 +83,26 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"trialtracker-f66c4","appId":"1:716035475632:web:45a7a9090431422d63d375","databaseURL":"https://trialtracker-f66c4-default-rtdb.firebaseio.com","storageBucket":"trialtracker-f66c4.appspot.com","apiKey":"AIzaSyBq2qW4IzQluIiG2TNy9JMNY0DTRGJfafA","authDomain":"trialtracker-f66c4.firebaseapp.com","messagingSenderId":"716035475632","measurementId":"G-9CBGB6YGZX"})),
+    provideAuth(() => getAuth()),
+    provideAnalytics(() => getAnalytics()),
+    provideAppCheck(() => {
+      // TODO get a reCAPTCHA Enterprise here https://console.cloud.google.com/security/recaptcha?project=_
+      const provider = new ReCaptchaEnterpriseProvider("6LeQOTgpAAAAAItobGsudpm1De65RQOXY1Z4n6Qu");
+      return initializeAppCheck(undefined, { provider, isTokenAutoRefreshEnabled: true });
+    }),
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    providePerformance(() => getPerformance()),
+    provideStorage(() => getStorage()),
+    provideRemoteConfig(() => getRemoteConfig()),
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

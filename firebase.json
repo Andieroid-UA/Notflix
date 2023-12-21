@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "trial-tracker-main-page2",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
