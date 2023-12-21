@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from "@angular/core";
-import { Task } from "../task.model";
+import { Task } from "../Models/task.model";
 
 @Injectable({
   providedIn: "root"

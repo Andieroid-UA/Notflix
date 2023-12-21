@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "trialtracker-f66c4": {
+      "hosting": {
+        "trial-tracker-main-page2": [
+          "trialtracker-f66c4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "trialtracker-f66c4"
+  }
+}

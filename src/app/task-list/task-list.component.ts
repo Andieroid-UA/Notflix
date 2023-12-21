@@ -1,15 +1,21 @@
-import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild,} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { TaskService } from '../task.service';
-import { Task } from '../task.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/add-subscription-dialog.component';
-import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
 import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
+
+import { TaskService } from '../Services/task.service';
+import { Task } from '../Models/task.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AddSubscriptionDialogComponent } from '../add-subscription-dialog/add-subscription-dialog.component';
+import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -19,8 +25,12 @@ import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog
 })
 
 export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -39,52 +49,66 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef
   ) {
     this.dataSource = new MatTableDataSource<Task>();
+
+    console.log("firestore", this.firestore);
+    const aCollection = collection(this.firestore, 'tasks')
+    this.items$ = collectionData(aCollection);
+    console.log("items", this.items$);
   }
 
+  // newFolderName: string = '';
+  // errorMessage: string = '';
+  // showDeleteModal = false;
+
   openDialog() {
-  
     this.dialog.open(AddSubscriptionDialogComponent, {
       width: '400px',
     });
-
   }
 
-
- /*  Editing A Task Dialog Box */
-
   edit(task: Task): void {
+    console.log("editing task", task);
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
       data: { ...task }
     });
     dialogRef.afterClosed().subscribe(result => {
-  
       if (result) {
-        this.taskService.edit(result); 
+        this.taskService.edit(result, task.id);
+        //this.taskService.edit(result);
       }
     });
   }
 
 
-/*  Deleting A Task Dialog Box */
- 
-  delete(company: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent, {
-      width: '250px',
-      data: {company: company }
-    });
+  delete(index: string) {
+    // const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === company) { 
-        this.taskService.delete(company);
+    // let company = "test";
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === company) {
+    //     //this.taskService.delete(company);
+    //   }
+    // });
+
+    console.log("I am running tasklist component delete function with index ", index);
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("the list of tasks is", tasks);
+
+    var taskToRemove = {};
+    for(var i in tasks) {
+      console.log("comparing", (parseInt(i)+1).toString(), "to", index.toString());
+      if(tasks[i]['id'].toString() == index.toString()) {
+        taskToRemove = tasks[i];
       }
-    });
-
-
+    }
+    console.log("task to remove is", taskToRemove);
+    this.taskService.remove(taskToRemove['id']);
   }
 
 
@@ -108,17 +132,30 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
    * initialize data-table by providing persons list to the dataSource.
    */
   ngOnInit(): void {
-    this.taskService.getAll();
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("I am in task-list component ngOnInit function and can see tasks ", tasks);
+    this.taskService.getTasks();
     this.serviceSubscribe = this.taskService.task$.subscribe((res) => {
       this.dataSource.data = res;
     });
+
+    if( tasks.length > 0 ) {
+      console.log("loading tasks into the ui list");
+      //this.taskService.setTasks(tasks);
+      for( var i in tasks ) {
+        this.taskService.add(tasks[i], false);
+
+      }
+    }
+
   }
 
   ngOnDestroy(): void {
     this.serviceSubscribe.unsubscribe();
   }
+
   private filter() {
-    this.dataSource.filterPredicate = (data: Task, filter: string) => {
+    this.dataSource.filterPredicate = (data: Task) => {
       let find = true;
 
       for (var columnName in this.columnsFilters) {
@@ -212,4 +249,13 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.filter();
     }
   }
+
+  //Old code for the folder storage
+
+    // We can attach this to display different data in the main window/table
+
+    // folderClicked(folder: { name: string; count: number }): void {
+    //   console.log(`Clicked folder: ${folder.name}`);
+    // }
+
 }

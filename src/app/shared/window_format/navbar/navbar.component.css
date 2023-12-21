@@ -6,3 +6,22 @@
 button {
   color: rgb(255, 255, 255);
 }
+
+.profile-picture {
+  margin-right: -100px;
+  width: 25px;
+  height: 25px;
+  border-radius: 60%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+ .user-details {
+  margin-top: 8px;
+  padding-left: 10px;
+}
+
+.profile-dropdown {
+  margin-top: 9px;
+  margin-left: 2px;
+}
