@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild,} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,6 +11,11 @@ import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/
 import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
 import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
 
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-task-list',
@@ -21,6 +26,9 @@ import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog
 export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -43,10 +51,15 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     private route: ActivatedRoute
   ) {
     this.dataSource = new MatTableDataSource<Task>();
+
+    console.log("firestore", this.firestore);
+    const aCollection = collection(this.firestore, 'items')
+    this.items$ = collectionData(aCollection);
+    console.log("items", this.items$);
   }
 
   openDialog() {
-  
+
     this.dialog.open(AddSubscriptionDialogComponent, {
       width: '400px',
     });
@@ -62,16 +75,16 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
       data: { ...task }
     });
     dialogRef.afterClosed().subscribe(result => {
-  
+
       if (result) {
-        this.taskService.edit(result); 
+        this.taskService.edit(result);
       }
     });
   }
 
 
 /*  Deleting A Task Dialog Box */
- 
+
   delete(company: string): void {
     const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent, {
       width: '250px',
@@ -79,7 +92,7 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === company) { 
+      if (result === company) {
         this.taskService.delete(company);
       }
     });
