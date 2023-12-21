@@ -1,23 +1,22 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDeleteDialogComponent } from '../confirmation-delete-dialog/confirmation-delete-dialog.component';
-import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
-import { TaskService } from '../task.service';
-import { Task } from '../task.model';
+
+import { TaskService } from '../Services/task.service';
+import { Task } from '../Models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/add-subscription-dialog.component';
+import { AddSubscriptionDialogComponent } from '../add-subscription-dialog/add-subscription-dialog.component';
+import { TaskEditFormDialogComponent } from '../task-edit-form-dialog/task-edit-form-dialog.component';
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-task-list',
@@ -26,13 +25,12 @@ import { AddSubscriptionDialogComponent } from 'src/app/add-subscription-dialog/
 })
 
 export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
- /*  @Output() currentSelectedData = new EventEmitter<TaskEditFormDialogComponent>();
 
-  handleSelectedData(data: Task) {
-    this.currentSelectedData.emit(data);
-  }; */
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
 
   public displayedColumns: string[] = ['company', 'date', 'type', 'price', 'category'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
@@ -51,46 +49,79 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef
   ) {
     this.dataSource = new MatTableDataSource<Task>();
+
+    console.log("firestore", this.firestore);
+    const aCollection = collection(this.firestore, 'tasks')
+    this.items$ = collectionData(aCollection);
+    console.log("items", this.items$);
   }
 
+  // newFolderName: string = '';
+  // errorMessage: string = '';
+  // showDeleteModal = false;
+
   openDialog() {
-    /* this.router.navigate(['new'], { relativeTo: this.route }); */
     this.dialog.open(AddSubscriptionDialogComponent, {
       width: '400px',
     });
-    /*  dialog.afterClosed().subscribe(result => {
-    if (result) {
-      this.dataService.add(result);
-    }
-  }); */
   }
 
-  edit(data: Task) {
+  edit(task: Task): void {
+    console.log("editing task", task);
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
-      data: data,
+      data: { ...task }
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.taskService.edit(result);
+        this.taskService.edit(result, task.id);
+        //this.taskService.edit(result);
       }
     });
   }
 
-  delete(id: any) {
-    const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.taskService.remove(id);
+  delete(index: string) {
+    // const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
+
+    // let company = "test";
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === company) {
+    //     //this.taskService.delete(company);
+    //   }
+    // });
+
+    console.log("I am running tasklist component delete function with index ", index);
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("the list of tasks is", tasks);
+
+    var taskToRemove = {};
+    for(var i in tasks) {
+      console.log("comparing", (parseInt(i)+1).toString(), "to", index['id'].toString());
+      if(tasks[i]['id'].toString() == index['id'].toString()) {
+        taskToRemove = tasks[i];
       }
-    });
+    }
+    console.log("task to remove is", taskToRemove);
+    this.taskService.remove(taskToRemove['id']);
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -101,17 +132,30 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
    * initialize data-table by providing persons list to the dataSource.
    */
   ngOnInit(): void {
-    this.taskService.getAll();
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("I am in task-list component ngOnInit function and can see tasks ", tasks);
+    this.taskService.getTasks();
     this.serviceSubscribe = this.taskService.task$.subscribe((res) => {
       this.dataSource.data = res;
     });
+
+    if( tasks.length > 0 ) {
+      console.log("loading tasks into the ui list");
+      //this.taskService.setTasks(tasks);
+      for( var i in tasks ) {
+        this.taskService.add(tasks[i], false);
+
+      }
+    }
+
   }
 
   ngOnDestroy(): void {
     this.serviceSubscribe.unsubscribe();
   }
+
   private filter() {
-    this.dataSource.filterPredicate = (data: Task, filter: string) => {
+    this.dataSource.filterPredicate = (data: Task) => {
       let find = true;
 
       for (var columnName in this.columnsFilters) {
@@ -205,4 +249,13 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
       this.filter();
     }
   }
+
+  //Old code for the folder storage
+
+    // We can attach this to display different data in the main window/table
+
+    // folderClicked(folder: { name: string; count: number }): void {
+    //   console.log(`Clicked folder: ${folder.name}`);
+    // }
+
 }

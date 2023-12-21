@@ -112,86 +112,105 @@
 
   
 /* ====Dashboard Charts ================== */
-.charts {
+
+.chart-container {
+  position: relative;
+  width: 600px;
+  height: 350px; 
+  margin: 0 auto;
+  padding-top: 20.5px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.chart-title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 30px;
+  margin-top: 100px;
+}
+
+.y-axis-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
-  align-items: center;
-  font-size: 5px;
-  margin-left: 17rem;
+  flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 10px; 
+}
+
+.y-label {
+  position: relative;
+  right: 30px; 
+  transform: translateX(-100%);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.chart-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 40px; 
+  box-sizing: border-box;
+  background: repeating-linear-gradient(to top, transparent, transparent 49px, #ddd 49px, #ddd 50px),
+              repeating-linear-gradient(to right, transparent, transparent 99px, #ddd 99px, #ddd 100px);
+}
+
+.chart {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
 }
 
 .bar {
-  height: 300px;
-  width: 512px;
-  border-radius: 5px;
-  box-shadow: 10px 20px 15px #aaaaaa;
-  font-size: 10px;
-  font-weight: bold;
-  margin: 5px;
+  width: 10%;
+  opacity: 0.7;
 }
 
 
-.donut {
-  height: 300px;
-  width: 300px;
-  border-radius: 5px;
-  box-shadow: 10px 20px 15px #aaaaaa;
-  font-size: 10px;
-  font-weight: bold;
-  margin: 4rem;
+.red { background-color: #ffcccc; }
+.orange { background-color: #ffe5cc; }
+.yellow { background-color: #ffffcc; }
+.green { background-color: #ccffcc; }
+.lightblue { background-color: #ccffff; }
+.blue { background-color: #ccccff; }
+.purple { background-color: #ecc6ff; }
 
+.bar:hover {
+  opacity: 1;
 }
 
-
-
-
-
-
-
-/* ====Dashboard Tables ================ */
-
-/* Style for the overall container */
-.container {
-  width: 58%;
-  margin-left: 21rem;
-  overflow: hidden;
-}
-
-/* Style for the dashboard header */
-.dashboard-header {
-  font-size: 24px;
-  color: #333;
+.bar::after {
+  content: attr(data-month);
+  display: block;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Basic styling for the table */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
-}
-
-/* Styling for table headers */
-.table th {
-  background-color: #f2f2f2;
+  font-size: 0.8em;
   color: black;
-  padding: 10px;
-  border: 1px solid #ddd;
 }
 
-/* Styling for table rows */
-.table td {
-  padding: 10px;
-  border: 1px solid #ddd;
+.x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; 
+  position: absolute;
+  bottom: -30px;
+  width: calc(100% - 30px); 
 }
 
-/* Shading every other row and highlight */
-.table tr:nth-child(odd) {
-  background-color: #f9f9f9;
+.x-label {
+
+  text-align: center;
+  display: block;
+  width: 99px; 
 }
 
-.table tr:hover {
-  background-color: #f1f1f1;
-}
+
 
 

@@ -1,5 +1,4 @@
-import { Component, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-import { AlertComponent } from 'src/app/alert/alert.component';
+import { Component, ComponentFactoryResolver, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +7,14 @@ import { AlertComponent } from 'src/app/alert/alert.component';
 })
 
 export class SidebarComponent {
-  folders = [
+
+  @Input() message: string | undefined;
+  @Input() folders: { name: string, count: number }[] | undefined;
+
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() deleteFolder: EventEmitter<{ name: string, count: number }> = new EventEmitter<{ name: string, count: number }>();
+
+  initialFolders = [
     { name: 'Trials', count: 0 },
     { name: 'All', count: 1 },
   ];
@@ -63,8 +69,8 @@ export class SidebarComponent {
         this.errorMessage = '';
       }, 3000);
     } else {
-      const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
-      const componentRef = this.viewContainerRef.createComponent(alertComponentFactory);
+      const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(SidebarComponent);
+      const componentRef = this.viewContainerRef.createComponent<SidebarComponent>(alertComponentFactory);
 
       componentRef.instance.folders = this.folders; // Pass the folders data to the modal component
 
@@ -80,6 +86,14 @@ export class SidebarComponent {
         componentRef.destroy();
       });
     }
+  }
+
+  onCloseModal(): void {
+    this.closeModal.emit();
+  }
+
+  onDeleteFolder(folder: { name: string, count: number }): void {
+    this.deleteFolder.emit(folder);
   }
 
 }

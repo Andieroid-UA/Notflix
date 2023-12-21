@@ -6,6 +6,7 @@ import { WindowCalendarComponent } from './pages/window-calendar/window-calendar
 import { WindowSubscriptionsComponent } from './pages/window-subscriptions/window-subscriptions.component';
 import { AuthGuard } from './auth/auth.guard';
 
+
 const appRoutes: Routes = [
   /* { path: '', redirectTo: '/subscriptions', pathMatch: 'full' },
   {
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'subscriptions', component: WindowSubscriptionsComponent },
   { path: 'dashboard', component: WindowDashboardComponent },
-  { path: 'calendar', component: WindowCalendarComponent },
+  { path: 'calendar', component: WindowCalendarComponent }
 ];
 
 @NgModule({
