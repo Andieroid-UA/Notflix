@@ -27,6 +27,8 @@ export class DataStorageService {
       tasks = data;
     });
 
+    //this.firestore.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
+
     this.http.put(this.firebaseRootURL, tasks).subscribe(res => {
       console.log("Firebase DB Response:", res);
     });

@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild,} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -66,12 +58,10 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   edit(task: Task): void {
-
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
       data: { ...task }
     });
-
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
@@ -84,12 +74,28 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   delete(id: any) {
     const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.taskService.remove(id);
+    let company = "test";
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === company) {
+        //this.taskService.delete(company);
       }
     });
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

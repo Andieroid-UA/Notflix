@@ -7,7 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 // import { CdkTableModule } from '@angular/cdk/table';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
@@ -31,7 +32,9 @@ import { SidebarComponent } from './shared/window_format/sidebar/sidebar.compone
 import { HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 
+
 @NgModule({
+  
   declarations: [
     AppComponent,
     TaskListComponent,
@@ -57,6 +60,7 @@ import { WindowDashboardComponent } from './pages/window-dashboard/window-dashbo
     // CdkTableModule,
     MatTableModule,
     MatPaginatorModule,
+
     MatSortModule,
     MatMenuModule,
     MatIconModule,

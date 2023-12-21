@@ -4,6 +4,7 @@
   <div class="add-button-container">
   <button type="button" class="add-button" (click)="openDialog()">Add New Subscription</button>
 </div>
+
 <!-- Table -->
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -54,6 +55,7 @@
           <button mat-icon-button (click)="delete(element['id'])">
             <mat-icon mat-icon-button color="warn">delete</mat-icon>
           </button>
+
         </div>
       </td>
     </ng-container>
