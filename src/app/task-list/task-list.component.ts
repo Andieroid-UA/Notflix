@@ -55,7 +55,7 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dataSource = new MatTableDataSource<Task>();
 
     console.log("firestore", this.firestore);
-    const aCollection = collection(this.firestore, 'items')
+    const aCollection = collection(this.firestore, 'tasks')
     this.items$ = collectionData(aCollection);
     console.log("items", this.items$);
   }

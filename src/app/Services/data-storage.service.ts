@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TaskService } from './task.service';
 import { Task } from '../Models/task.model';
-import { exhaustMap, map, take, tap } from 'rxjs';
+import { Observable, exhaustMap, map, take, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -12,12 +15,19 @@ export class DataStorageService {
   firebaseRootURL =
   "https://trialtracker-f66c4-default-rtdb.firebaseio.com/tasks.json";
 
+  items$: Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
+
   // *INJECTIONS*
   constructor(
     private http: HttpClient,
     private taskService: TaskService,
-    private authService: AuthService
-    ) {}
+    private authService: AuthService,
+    private db: AngularFirestore
+    ) {
+
+      let firestore = this.firestore;
+    }
 
 
   // Method- Save tasks
@@ -26,6 +36,8 @@ export class DataStorageService {
     this.taskService.getTasks().subscribe(data => {
       tasks = data;
     });
+
+    this.db.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
 
     //this.firestore.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
 

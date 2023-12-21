@@ -13,7 +13,7 @@ export class TaskService {
 
   public task$: BehaviorSubject<Task[]>;
 
-  private task: Task[] = [];
+  public task: Task[] = [];
 
   folders: { name: string, count: number }[] = [];
 
