@@ -10,8 +10,9 @@ import { Task } from '../../../Models/task.model';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
+
 export class NavbarComponent implements OnInit, OnDestroy{
 
   isAuthenticated = false;
@@ -73,4 +74,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
 
 //*********************************************** **************************************************************//
 
+  onLogout() {
+    this.authService.logout();
+  }
 }
