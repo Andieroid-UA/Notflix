@@ -4,13 +4,31 @@ import { AuthComponent } from './auth/auth.component';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 import { WindowCalendarComponent } from './pages/window-calendar/window-calendar.component';
 import { WindowSubscriptionsComponent } from './pages/window-subscriptions/window-subscriptions.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: '', redirectTo: '/subscriptions', pathMatch: 'full' },
+  {
+    path: 'subscriptions',
+    component: WindowSubscriptionsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'dashboard',
+    component: WindowDashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'calendar',
+    component: WindowCalendarComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'auth', component: AuthComponent },
-  { path: 'subscriptions', component: WindowSubscriptionsComponent },
-  { path: 'dashboard', component: WindowDashboardComponent },
-  { path: 'calendar', component: WindowCalendarComponent },
+  // { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  // { path: 'auth', component: AuthComponent },
+  // { path: 'subscriptions', component: WindowSubscriptionsComponent },
+  // { path: 'dashboard', component: WindowDashboardComponent },
+  // { path: 'calendar', component: WindowCalendarComponent },
 ];
 
 @NgModule({
