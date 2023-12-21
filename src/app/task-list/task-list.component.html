@@ -9,9 +9,6 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-
-
-
     <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef>
         <div style="display: flex; align-items: center;">
@@ -22,11 +19,11 @@
       <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
     </ng-container>
 
-    <ul>
+    <!-- <ul>
       <li class="text" *ngFor="let item of items$ | async">
         {{item.name}}
       </li>
-    </ul>
+    </ul> -->
 
 <!--      <ng-container [matColumnDef]="'actions'">
       <th mat-header-cell *matHeaderCellDef> actions </th>
@@ -76,7 +73,7 @@
             <mat-icon mat-icon-button color='primary'>edit</mat-icon>
           </button>
 
-          <button mat-icon-button (click)="delete(element['id'])">
+          <button mat-icon-button (click)="delete(element)">
             <mat-icon mat-icon-button color="warn">delete</mat-icon>
           </button>
 
