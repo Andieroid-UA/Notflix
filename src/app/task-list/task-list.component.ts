@@ -102,8 +102,8 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
 
     var taskToRemove = {};
     for(var i in tasks) {
-      console.log("comparing", (parseInt(i)+1).toString(), "to", index.toString());
-      if(tasks[i]['id'].toString() == index.toString()) {
+      console.log("comparing", (parseInt(i)+1).toString(), "to", index['id'].toString());
+      if(tasks[i]['id'].toString() == index['id'].toString()) {
         taskToRemove = tasks[i];
       }
     }
