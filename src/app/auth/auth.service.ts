@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { throwError, Observable, Subject } from 'rxjs';
 import { User } from './user.model';
-import { Router } from '@angular/router';
 
 export interface AuthResponseData {
   idToken: string;
@@ -16,15 +15,9 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  user = new Subject<User>();
 
-
-  user = new BehaviorSubject<User>(null);
-
-
-  private tokenExpirationTimer: any;
-
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   signup(email: string, password: string): Observable<any> {
     return this.http
@@ -45,7 +38,7 @@ export class AuthService {
           resData.idToken,
           +resData.expiresIn
           );
-        })
+    })
     );
   }
 
@@ -72,31 +65,13 @@ export class AuthService {
   }
 
   private handleAuthentication(
-    email : string,
+    email: string,
     userId: string,
     token: string,
-    expiresIn: number
-    ) {
+    expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
-  }
-
-
-  logout() {
-    this.user.next(null);
-    this.router.navigate(['/auth']);
-    localStorage.removeItem('userData');
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-    this.tokenExpirationTimer = null;
-  }
-
-  autoLogout(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
   }
 
   private handleError(errorRes: HttpErrorResponse) {

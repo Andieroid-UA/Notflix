@@ -24,20 +24,25 @@ export class AddSubscriptionDialogComponent {
       price: ['', Validators.required],
       category: ['', Validators.required],
     });
+
+    console.log(this.formInstance.valid);
   }
 
   save(): void {
+    console.log("i am in the save function of add-subscription-dialog.component.ts");
     if (this.formInstance.valid) {
+      console.log("formInstance is valid", this.formInstance);
       var newTask = this.formInstance.value;
-      var newId = 1;
-      if( this.taskService.task.length > 1)
-      {
-        var max = this.taskService.task.reduce((prev, current) => (prev && prev.id > current.id) ? prev : current);
-        console.log("max", max);
-        newId = max.id + 1;
-      }
-      newTask.id = newId;
-      this.taskService.add(newTask);
+      //var newId = 1;
+      // if( this.taskService.task.length > 1)
+      // {
+      //   console.log("time to search for the highest existing id value");
+      //   var max = this.taskService.task.reduce((prev, current) => (prev && prev.id > current.id) ? prev : current);
+      //   console.log("max", max);
+      //   newId = max.id + 1;
+      // }
+      // newTask.id = newId;
+      this.taskService.add(newTask, true);
       this.dialogRef.close();
     }
   }

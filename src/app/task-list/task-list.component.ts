@@ -71,33 +71,44 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   edit(task: Task): void {
+    console.log("editing task", task);
     const dialogRef = this.dialog.open(TaskEditFormDialogComponent, {
       width: '400px',
       data: { ...task }
     });
     dialogRef.afterClosed().subscribe(result => {
-
-
       if (result) {
-        this.taskService.edit(result);
-        this.taskService.edit(result);
+        this.taskService.edit(result, task.id);
+        //this.taskService.edit(result);
       }
     });
   }
 
 
-  delete(id: any) {
-    const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
+  delete(index: string) {
+    // const dialogRef = this.dialog.open(ConfirmationDeleteDialogComponent);
 
-    let company = "test";
+    // let company = "test";
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === company) {
-        //this.taskService.delete(company);
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === company) {
+    //     //this.taskService.delete(company);
+    //   }
+    // });
+
+    console.log("I am running tasklist component delete function with index ", index);
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("the list of tasks is", tasks);
+
+    var taskToRemove = {};
+    for(var i in tasks) {
+      console.log("comparing", (parseInt(i)+1).toString(), "to", index.toString());
+      if(tasks[i]['id'].toString() == index.toString()) {
+        taskToRemove = tasks[i];
       }
-    });
-
-
+    }
+    console.log("task to remove is", taskToRemove);
+    this.taskService.remove(taskToRemove['id']);
   }
 
 
@@ -121,10 +132,22 @@ export class TaskListComponent implements OnInit, OnDestroy, AfterViewInit {
    * initialize data-table by providing persons list to the dataSource.
    */
   ngOnInit(): void {
+    var tasks = JSON.parse(localStorage.getItem("listoftasks"));
+    console.log("I am in task-list component ngOnInit function and can see tasks ", tasks);
     this.taskService.getTasks();
     this.serviceSubscribe = this.taskService.task$.subscribe((res) => {
       this.dataSource.data = res;
     });
+
+    if( tasks.length > 0 ) {
+      console.log("loading tasks into the ui list");
+      //this.taskService.setTasks(tasks);
+      for( var i in tasks ) {
+        this.taskService.add(tasks[i], false);
+
+      }
+    }
+
   }
 
   ngOnDestroy(): void {

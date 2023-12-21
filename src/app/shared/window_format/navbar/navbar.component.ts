@@ -62,13 +62,13 @@ export class NavbarComponent implements OnInit, OnDestroy{
   }
 
   onLogout() {
-    this.authService.logout();
+    // this.authService.logout();
   }
 
 //*****************************Test function to see if local storage works****************************************
 
   setValue() {
-    this.taskService.setItem('my_thing', 'something');
+    this.taskService.setItem('asparagus', 'something');
   }
 
 //*********************************************** **************************************************************//

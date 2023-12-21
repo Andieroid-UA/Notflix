@@ -23,7 +23,7 @@ export class DataStorageService {
     private http: HttpClient,
     private taskService: TaskService,
     private authService: AuthService,
-    private db: AngularFirestore
+    // private db: AngularFirestore
     ) {
 
       let firestore = this.firestore;
@@ -37,7 +37,7 @@ export class DataStorageService {
       tasks = data;
     });
 
-    this.db.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
+    // this.db.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
 
     //this.firestore.collection('tasks').add(tasks).then(res => { console.log(res); }).catch(err => console.log(err));
 

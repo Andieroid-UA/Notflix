@@ -90,13 +90,14 @@ export class TaskEditFormDialogComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.taskService.edit(result);
+        this.taskService.edit(result, task.id);
       }
     });
 
 
   }
   save(): void {
+    console.log("save is being run for task edit form dialog");
     this.dialogRef.close({...this.formInstance.value});
   }
 

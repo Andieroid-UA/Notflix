@@ -64,8 +64,33 @@ export class TaskService {
     return this.task[index];
   }
 
-  add(task: Task): void {
-    const existingTask = this.task.find(p => p.company === task.company);
+  add(task: Task, saveToLocal: boolean): void {
+    console.log("I am in task.service add function with task ", task);
+    console.log("the total list of tasks I can see is", this.task);
+
+    var newId = 1;
+    if( this.task.length > 0)
+    {
+      console.log("time to search for the highest existing id value");
+      var max = this.task.reduce((prev, current) => (prev && prev.id > current.id) ? prev : current);
+      console.log("max", max);
+      newId = max.id + 1;
+    }
+    task.id = newId;
+
+
+    if( saveToLocal == true ) {
+      localStorage.setItem("listoftasks", JSON.stringify(this.task));
+    }
+    else {
+      // this is the use-case for auto-loading tasks, populate the task list and the ui
+      console.log("I am trying to push to the tasks list task ", task);
+      this.task.push(task);
+      this.task$.next(this.task);
+      console.log("the resulting list of tasks is ", this.task);
+    }
+
+    const existingTask = this.task.find(p => p.id === task.id);
     if (existingTask) {
       Object.assign(existingTask, task);
     } else {
@@ -74,16 +99,21 @@ export class TaskService {
     this.task$.next(this.task);
   }
 
-  edit(updatedTask: Task): void {
-    const taskIndex = this.task.findIndex(t => t.company === updatedTask.company);
+  edit(updatedTask: Task, updatedIdValue: number): void {
+    console.log("I am in task.service edit function with task ", updatedTask, "and id value", updatedIdValue);
+    const taskIndex = this.task.findIndex(t => t.id === updatedIdValue);
     if (taskIndex !== -1) {
+      updatedTask.id = updatedIdValue;
+      console.log("I have found a task to edit in task service edit function~!~~~!!!!!");
       this.task[taskIndex] = updatedTask;
       this.task$.next(this.task);
+      localStorage.setItem("listoftasks", JSON.stringify(this.task));
     }
   }
 
-  remove(company: string): void {
-    this.task = this.task.filter(p => p.company !== company);
+  remove(id: number): void {
+    this.task = this.task.filter(p => p.id !== id);
+    localStorage.setItem("listoftasks", JSON.stringify(this.task));
     this.task$.next(this.task);
   }
 
@@ -98,7 +128,5 @@ export class TaskService {
     const newFolder = { name: folderName, count: 0 };
     this.folders.push(newFolder);
   }
-
-
 
 }
