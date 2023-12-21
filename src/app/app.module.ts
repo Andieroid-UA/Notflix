@@ -34,6 +34,7 @@ import { SidebarComponent } from './shared/window_format/sidebar/sidebar.compone
 import { HttpClientModule } from '@angular/common/http';
 import { WindowDashboardComponent } from './pages/window-dashboard/window-dashboard.component';
 
+
 @NgModule({
   
   declarations: [

@@ -10,6 +10,8 @@ export class TaskService {
 
   task$: BehaviorSubject<Task[]>;
   task: Array<Task> = [];
+  tasksSubject: any;
+    tasks$: any;
 
   constructor() {
     this.task$ = new BehaviorSubject([]);
@@ -18,6 +20,11 @@ export class TaskService {
 
   getAll() {
     this.task$.next(this.task);
+  }
+
+  getActiveSubscriptionsCount(): number {
+
+    return this.tasksSubject.value.filter(task => task.isActive).length;
   }
 
    /* Add A Subscription */
@@ -37,7 +44,6 @@ export class TaskService {
     this.task$.next(this.task);
   }
   
-
 
    /* Edit A Subscription */
   edit(updatedTask: Task) {
