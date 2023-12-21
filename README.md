@@ -1,5 +1,6 @@
 # TrialTracker
 <h2>App Description</h2>
+<p>Trial Tracker is designed for managing monthly and yearly subscriptions and provides a comprehensive overview of various subscription-based services. Trial Tracker enables the tracking of ongoing, expired, and upcoming subscription trials, ensuring users can evaluate the value of services before committing financially. With monthly and yearly tracking features, users can monitor their spending habits, receive notifications for renewal deadlines, and make informed decisions about which subscriptions to continue or cancel.</p>
 
 ### Key Product Features
 
