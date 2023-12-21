@@ -28,6 +28,6 @@ The team engaged in a collaborative brainstorming session using Figma to visuali
 ##### Login Page
 ![image](https://github.com/Andieroid-UA/Notflix/assets/48695329/2b359f1c-7415-4a32-8516-eaa99435ae79)
 
-##### Sign-Up Page
-##### Subscription List Table
 ##### Dashboard
+![image](https://github.com/Andieroid-UA/Notflix/assets/48695329/2f91c6de-c202-424b-afa5-c6e21ac6f571)
+
