@@ -25,45 +25,60 @@
             <button class="btn" width="24" height="24">Dashboard</button>
           </a>
         </li>
-        <li class="font">
-          <a class="nav-link text-white" (click)="onLogout()">
-            <button class="btn" width="24" height="24">Logout</button>
-          </a>
-        </li>
-
 
         <li class="nav-item dropdown user-container" appDropdown>
           <!-- href="#" -->
           <a
-          class="nav-link dropdown-toggle"
-          style="cursor: pointer"
-          id="navbarDropdownMenuLink"
-          type="button"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          [attr.aria-expanded]="show"
-          (click)="show = !show"
-          [class.show]="show"
+            class="nav-link dropdown-toggle"
+            style="cursor: pointer; color: white"
+            id="navbarDropdownMenuLink"
+            type="button"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            [attr.aria-expanded]="show"
+            (click)="show = !show"
+            [class.show]="show"
           >
+            User
 
-          User
-
-          <img class="profile-picture" src="./assets/img/freckles250x250.jpg" alt="Profile Picture">
+            <img
+              class="profile-picture"
+              src="./assets/img/freckles250x250.jpg"
+              alt="Profile Picture"
+            />
           </a>
-          <ul class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" routerLink="/auth"><img src="./assets/img/Google_icon_logout.svg" alt="Logout Icon">Logout</a></li>
-            <button><a class="dropdown-item" (click)="onSaveData()">Save Tasks</a></button>
-            <button><a class="dropdown-item" (click)="onFetchData()">Fetch Tasks</a></button>
+          <ul
+            class="dropdown-menu profile-dropdown"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" (click)="onLogout()"
+                ><img
+                  src="./assets/img/Google_icon_logout.svg"
+                  alt="Logout Icon"
+                />Logout</a
+              >
+            </li>
+            <button>
+              <a class="dropdown-item" (click)="onSaveData()">Save Tasks</a>
+            </button>
+            <button>
+              <a class="dropdown-item" (click)="onFetchData()">Fetch Tasks</a>
+            </button>
 
-<!-- *****************************Test function to see if local storage works**************************************** -->
+            <!-- *****************************Test function to see if local storage works**************************************** -->
 
-            <button><a class="dropdown-item" (click)="setValue()">(Test) Save to App</a></button>
+            <button>
+              <a class="dropdown-item" (click)="setValue()"
+                >(Test) Save to App</a
+              >
+            </button>
 
-<!--*********************************************** **************************************************************    -->
-
+            <!--*********************************************** **************************************************************    -->
           </ul>
+        </li>
       </ul>
     </div>
   </div>
