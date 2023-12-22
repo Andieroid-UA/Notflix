@@ -36,18 +36,29 @@ import { WindowSubscriptionsComponent } from './pages/window-subscriptions/windo
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider, provideAppCheck } from '@angular/fire/app-check';
+import {
+  getAnalytics,
+  provideAnalytics,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import {
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider,
+  provideAppCheck,
+} from '@angular/fire/app-check';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
+import {
+  getRemoteConfig,
+  provideRemoteConfig,
+} from '@angular/fire/remote-config';
 
 @NgModule({
-
   declarations: [
     AppComponent,
     TaskListComponent,
@@ -65,7 +76,6 @@ import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-confi
     NavbarComponent,
     SidebarComponent,
     WindowDashboardComponent,
-    AlertComponent,
     WindowCalendarComponent,
     WindowSubscriptionsComponent,
   ],
@@ -75,7 +85,6 @@ import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-confi
     // CdkTableModule,
     MatTableModule,
     MatPaginatorModule,
-
     MatSortModule,
     MatMenuModule,
     MatIconModule,
@@ -87,13 +96,29 @@ import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-confi
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    provideFirebaseApp(() => initializeApp({"projectId":"trialtracker-f66c4","appId":"1:716035475632:web:45a7a9090431422d63d375","databaseURL":"https://trialtracker-f66c4-default-rtdb.firebaseio.com","storageBucket":"trialtracker-f66c4.appspot.com","apiKey":"AIzaSyBq2qW4IzQluIiG2TNy9JMNY0DTRGJfafA","authDomain":"trialtracker-f66c4.firebaseapp.com","messagingSenderId":"716035475632","measurementId":"G-9CBGB6YGZX"})),
+    provideFirebaseApp(() =>
+      initializeApp({
+        projectId: 'trialtracker-f66c4',
+        appId: '1:716035475632:web:45a7a9090431422d63d375',
+        databaseURL: 'https://trialtracker-f66c4-default-rtdb.firebaseio.com',
+        storageBucket: 'trialtracker-f66c4.appspot.com',
+        apiKey: 'AIzaSyBq2qW4IzQluIiG2TNy9JMNY0DTRGJfafA',
+        authDomain: 'trialtracker-f66c4.firebaseapp.com',
+        messagingSenderId: '716035475632',
+        measurementId: 'G-9CBGB6YGZX',
+      })
+    ),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),
     provideAppCheck(() => {
       // TODO get a reCAPTCHA Enterprise here https://console.cloud.google.com/security/recaptcha?project=_
-      const provider = new ReCaptchaEnterpriseProvider("6LeQOTgpAAAAAItobGsudpm1De65RQOXY1Z4n6Qu");
-      return initializeAppCheck(undefined, { provider, isTokenAutoRefreshEnabled: true });
+      const provider = new ReCaptchaEnterpriseProvider(
+        '6LeQOTgpAAAAAItobGsudpm1De65RQOXY1Z4n6Qu'
+      );
+      return initializeAppCheck(undefined, {
+        provider,
+        isTokenAutoRefreshEnabled: true,
+      });
     }),
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
@@ -112,6 +137,6 @@ import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-confi
     //   multi: true,
     // },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
